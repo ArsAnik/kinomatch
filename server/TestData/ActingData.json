@@ -1,4 +1,4 @@
-db.users.insertMany([
+[
     {"name": "Martha", "description": "description", "birthday": "2003-01-18", "photo": "link" },
     {"name": "Pauline", "description": "description", "birthday": "1978-10-12", "photo": "link"},
     {"name": "Josephine", "description": "description", "birthday": "1994-06-12", "photo": "link"},
@@ -19,6 +19,6 @@ db.users.insertMany([
     {"name": "Natalie", "description": "description", "birthday": "1977-09-28", "photo": "link"},
     {"name": "Mathew", "description": "description", "birthday": "1974-10-18", "photo": "link"},
     {"name": "Richard", "description": "description", "birthday": "1987-08-08", "photo": "link"},
-    {"name": "Alice", "description": "description", "birthday": "2003-01-18", "photo": "link"},
-])
+    {"name": "Alice", "description": "description", "birthday": "2003-01-18", "photo": "link"}
+]
 

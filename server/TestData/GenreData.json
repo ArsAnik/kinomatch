@@ -1,4 +1,4 @@
-db.users.insertMany([
+[
     {"name": "TV"},
     {"name": "action film"},
     {"name": "blockbuster"},
@@ -20,7 +20,5 @@ db.users.insertMany([
     {"name": "Western"},
     {"name": "military"},
     {"name": "drama"},
-    {"name": "fantastic"},
-
-
-])
+    {"name": "fantastic"}
+]
