@@ -1,18 +1,21 @@
 const Router = require("express");
-const User = require("../models/User");
+const AuthController = require('../controllers/auth.controller');
+const {check} = require("express-validator");
 const router = new Router();
 
-router.post('/registration', (req, res)=>{
-    try{
-        const {email, password} = req.body;
 
-        const candidate = User.findOne({email});
+router.post('/registration',
+    [
+        check('login', 'Login cannot be empty').notEmpty(),
+        check('email', "Uncorrected email").isEmail(),
+        check('password', "Password should be longer than 3 symbols").isLength({min:4}),
+    ],
+    AuthController.registration);
 
-        if(candidate){
-            return res.status(400).json({message: ""});
-        }
-    }
-    catch (e){
+router.post('/login', [
+        check('login', 'Login cannot be empty').notEmpty(),
+        check('password', 'Password cannot be empty').notEmpty()
+    ],
+    AuthController.login);
 
-    }
-});
+module.exports = router;
