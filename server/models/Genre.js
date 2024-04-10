@@ -1,4 +1,4 @@
-const {Schema, model, ObjectId} = require("mongoose")
+const {Schema, model} = require("mongoose")
 
 const Genre = new Schema({
     name: {type: String, required: true, unique: true}
