@@ -6,9 +6,9 @@ const userRouter = require("./routes/user.router");
 const config = require("config");
 
 const app = express();
-const PORT = config.get("serverPort");
+const PORT = config.get("server.port");
 
-const insertTestData = require("./testData/insetTestData");
+const insertData = require("./database_operations/insertData");
 
 app.use(express.json());
 app.use("/auth", authRouter);
@@ -18,13 +18,12 @@ app.use("/user", userRouter);
 const start = async () => {
     try {
 
-        await mongoose.connect(config.get("dbUrl"));
-
-        await insertTestData.dropAllData();
-        await insertTestData.insertAllTestData();
+        await mongoose.connect(config.get("server.dbURL"));
 
         app.listen(PORT, () => {
            console.log("Server started on port ", PORT);
+           insertData.dropAllData();
+           insertData.insertFilmData();
         });
 
     }catch (e){
