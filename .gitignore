@@ -9,8 +9,5 @@ links
 
 config
 
-server/node_modules
-server/config/default.json
-server/node_modules/express/package.json
-server/node_modules/.package-lock.json
+/server/node_modules
 /server/config
