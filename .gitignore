@@ -1,8 +1,6 @@
 
 node_modules
 
-node_modules/express
-
 .idea/vcs.xml
 
 .idea/jsLibraryMappings.xml
@@ -10,11 +8,8 @@ node_modules/express
 links
 
 config
-server/node_modules/.package-lock.json
-server/node_modules/cookie/HISTORY.md
-server/node_modules/cookie/index.js
-server/node_modules/cookie/package.json
-server/node_modules/cookie/README.md
-server/node_modules/express/History.md
-server/node_modules/express/lib/response.js
+
+server/node_modules
+server/config/default.json
 server/node_modules/express/package.json
+server/node_modules/.package-lock.json
