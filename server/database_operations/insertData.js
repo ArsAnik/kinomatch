@@ -2,6 +2,7 @@ const Film = require('../models/Film');
 const User = require('../models/User');
 const Genre = require('../models/Genre');
 const FilmWithScore = require('../models/FilmWithScore');
+const User_testData = require('../database_operations/UserData.json');
 const config = require("config");
 const request = require('request');
 
@@ -11,6 +12,7 @@ class insertData{
         try {
             await Film.deleteMany();
             await User.deleteMany();
+            await Genre.deleteMany();
             await FilmWithScore.deleteMany();
         }
         catch (e){
@@ -38,7 +40,7 @@ class insertData{
                     let films = JSON.parse(body);
                     for(let i = 0; i < films.limit; ++i){
                         await Film.collection.insertOne(films.docs[i]).then(function () {
-                            counter += limit;
+                            counter += 1;
                         }).catch(function (error) {
                             console.log(error);
                         });
@@ -82,6 +84,16 @@ class insertData{
                 });
             }
         });
+    }
+
+    async insertUserData() {
+        //await User.deleteMany();
+
+        // await User.insertMany(User_testData).then(function () {
+        //     console.log('Users inserted');
+        // }).catch(function (error) {
+        //     console.log(error);
+        // });
     }
 }
 
