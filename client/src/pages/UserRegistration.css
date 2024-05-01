@@ -1,0 +1,60 @@
+@import "materialize-css/dist/css/materialize.min.css";
+body{
+    background-image: url("src/img/fon.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat-y
+
+}
+/*div.registration{*/
+/*    position: relative;*/
+/*    width: 360px;*/
+/*    height: 800px;*/
+/*}*/
+
+div.registration_header{
+    position: absolute;
+    width: 306px;
+    height: 64px;
+    left: 27px;
+    right: 27px;
+    top: 121px;
+    bottom: 615px;
+    color: #66FCF1;
+    font-family: Bahnschrift;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 62px;
+    letter-spacing: 0px;
+    text-align: left;
+
+}
+
+div.registration_input{
+    position: absolute;
+    width: 294px;
+    height: 38px;
+    left: 33px;
+    top: 236px;
+}
+
+button.registration_btn{
+    position: absolute;
+    width: 189px;
+    height: 36px;
+    left: 84px;
+    right: 87px;
+    top: 544px;
+    bottom: 220px;
+    border-radius: 14px;
+    background: #66FCF1;
+    color: #010101;
+    font-family: Bahnschrift;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+

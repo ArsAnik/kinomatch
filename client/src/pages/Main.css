@@ -1,0 +1,43 @@
+@import "materialize-css/dist/css/materialize.min.css";
+
+body{
+    background-image: url("src/img/fon.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat-y
+
+}
+
+button.list_film {
+    position: absolute;
+    width: 60px;
+    height: 52px;
+    left: 154px;
+    right: 146px;
+    top: 718px;
+    bottom: 30px;
+    box-sizing: border-box;
+    background: none;
+    border: 1px solid #66FCF1;
+    border-radius: 5px;
+
+
+}
+
+button.list_film:after{
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    right:14px;
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-image: url("src/img/icon_film.svg");
+}
+
+
+
+
