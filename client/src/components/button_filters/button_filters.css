@@ -1,27 +1,16 @@
-button.button_filters {
-    position: absolute;
+.button_filters {
     width: 45px;
     height: 45px;
-    left: 20px;
-    right: -18px;
-    top: 28px;
-    bottom: -31px;
-    background: rgb(31, 40, 51);
+    background: #1F2833;
     border-radius: 50%;
     border:none;
-
-
 }
-button.button_filters:after {
-    content: '';
-    position: absolute;
+
+.img_btn_filters{
     top: 15px;
+    right: 10px;
+    bottom: 16px;
     left: 10px;
-    right:14px;
     width: 25px;
     height: 14px;
-    background-position: center;
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-image: url("src/img/icon_filters.svg");
 }

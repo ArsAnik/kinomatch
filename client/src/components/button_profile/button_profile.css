@@ -1,27 +1,16 @@
-button.button_profile {
-    position: absolute;
+.button_profile {
     width: 45px;
     height: 45px;
-    left: 304px;
-    right: 18px;
-    top: 28px;
-    bottom: -31px;
-    background: rgb(31, 40, 51);
+    background: #1F2833;
     border-radius: 50%;
     border:none;
-
-
 }
-button.button_profile:after {
-    content: '';
-    position: absolute;
+
+.img_btn_profile{
     top: 11px;
+    right: 12px;
+    bottom: 12px;
     left: 11px;
-    right:14px;
     width: 22px;
     height: 22px;
-    background-position: center;
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-image: url("src/img/icon_profile.svg");
 }

@@ -11,16 +11,20 @@ export const UserRegistration =() =>{
     const [password,setPassword] = useState("")
 
     return(
-        <div className="registration">
-            <div className="registration_header">Регистрация</div>
-            <Button_back/>
-            <div className="registration_input">
-                <Input value = {login} setValue = {setLogin} type="text" placeholder="Логин" />
-                <Input value = {name} setValue = {setName} type="text" placeholder="ФИО"/>
-                <Input value = {email} setValue = {setEmail} type="text" placeholder="Почта"/>
-                <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
+        <div className="registration_body">
+            <div className="registration_btn_back">
+                <Button_back/>
             </div>
-            <button className="registration_btn" onClick={() => registration(login,name,email,password)}>Зарегистрироваться</button>
+            <div className="registration">
+                <div className="registration_header">Регистрация</div>
+                <div className="registration_input">
+                    <Input value = {login} setValue = {setLogin} type="text" placeholder="Логин" />
+                    <Input value = {name} setValue = {setName} type="text" placeholder="ФИО"/>
+                    <Input value = {email} setValue = {setEmail} type="text" placeholder="Почта"/>
+                    <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
+                </div>
+                <button className="registration_btn" onClick={() => registration(login,name,email,password)}>Зарегистрироваться</button>
+            </div>
         </div>
     );
 };

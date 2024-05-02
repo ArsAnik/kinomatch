@@ -1,27 +1,16 @@
-button.button_back{
-    position: absolute;
+.button_back{
     width: 45px;
     height: 45px;
-    left: 20px;
-    right: -18px;
-    top: 28px;
-    bottom: -31px;
-    background: rgb(31, 40, 51);
+    background: #1F2833;
     border-radius: 50%;
     border:none;
-
-
 }
-button.button_back:after{
-    content: '';
-    position: absolute;
-    top: 16px;
-    left: 9px;
-    right:14px;
+
+.img_btn_back{
     width: 27px;
-    height: 15px;
-    background-position: center;
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-image: url("src/img/arrow_back.svg");
+    height: 13px;
+    top: 16px;
+    right: 9px;
+    bottom: 16px;
+    left: 9px;
 }

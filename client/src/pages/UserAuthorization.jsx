@@ -8,15 +8,19 @@ export const UserAuthorization =() =>{
     const [password,setPassword] = useState("")
 
     return(
-        <div className="authorization">
-            <div className="authorization_header">Вход</div>
-            <Button_back/>
-            <div className="authorization_input">
-                <Input value = {login} setValue = {setLogin} type="text" placeholder="Логин" />
-                <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
+        <div className="authorization_body">
+            <div className="authorization_btn_back">
+                <Button_back/>
             </div>
-            <button className="authorization_btn" >Войти</button>
-            <button className="reg_in_auth_btn" >Зарегистрироваться</button>
+            <div className="authorization">
+                <div className="authorization_header">Вход</div>
+                <div className="authorization_input">
+                    <Input value = {login} setValue = {setLogin} type="text" placeholder="Логин" />
+                    <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
+                </div>
+                <button className="authorization_btn" >Войти</button>
+                <button className="reg_in_auth_btn" >Зарегистрироваться</button>
+            </div>
         </div>
     );
 };
