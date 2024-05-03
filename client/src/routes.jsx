@@ -4,6 +4,7 @@ import {UserProfile} from "./pages/UserProfile";
 import {Main} from "./pages/Main";
 import {UserAuthorization} from "./pages/UserAuthorization";
 import {UserRegistration} from "./pages/UserRegistration";
+import {UserSettings} from "./pages/UserSettings.jsx";
 
 
 export const useRoutes = isAuthenticated => {
@@ -19,6 +20,8 @@ export const useRoutes = isAuthenticated => {
             <Route path="/" element={<Main />}/>
             <Route path="/authorization" element={<UserAuthorization />}/>
             <Route path="/registration" element={<UserRegistration />}/>
+            <Route path="/profile" element={<UserProfile />}/>
+            <Route path="/settings" element={<UserSettings />}/>
         </Routes>
     )
 

@@ -6,11 +6,11 @@ body{
     background-size: cover;
     background-repeat: repeat-y
 }
-
 .registration_btn_back{
     position: relative;
     top: 28px;
 }
+
 
 .registration{
     position: absolute;

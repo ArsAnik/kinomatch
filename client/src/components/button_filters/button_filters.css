@@ -7,10 +7,6 @@
 }
 
 .img_btn_filters{
-    top: 15px;
-    right: 10px;
-    bottom: 16px;
-    left: 10px;
-    width: 25px;
-    height: 14px;
+    stroke: #66FCF1;
+    fill: #66FCF1;
 }
