@@ -1,0 +1,29 @@
+.btn_block{
+    display: flex;
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn_choice{
+    display: block;
+    width: 64px;
+    height: 31px;
+    margin: 25px 25px 0;
+    padding: 10px 10px;
+    background: none;
+    border: 1px solid #66FCF1;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img_btn_film_ok{
+    width: 70%;
+}
+.img_btn_film_no{
+    width: 100%;
+
+}

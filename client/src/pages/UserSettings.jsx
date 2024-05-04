@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './UserSettings.css'
 import Button_back from "../components/button_back/button_back.jsx";
+import Input from "../components/input/input.jsx";
 
 export const UserSettings =() =>{
+    const [login,setLogin] = useState("yoyogikkk")
+    const [name,setName] = useState("Дорогова Дарья Дмитриевна")
+    const [email,setEmail] = useState("daria180301@rambler.ru")
+    const [password,setPassword] = useState("yoyogikkk")
+
     return(
         <div className="settings_body">
             <div className="settings_btn_back">
@@ -17,10 +23,11 @@ export const UserSettings =() =>{
                         <button className="btn_photo">Изменить фото</button>
                     </div>
                 </div>
-                <div className="setting_inf_block">
-                    <div className="setting_inf_text">yoyogikk</div>
-                    <div className="setting_inf_text">Дорогова Дарья Дмитриевна</div>
-                    <div className="setting_inf_text">daria180301@rambler.ru</div>
+                <div> className="setting_inf_block">
+                    <Input value={login} setValue = {setLogin} type="text" placeholder="Логин"/>
+                    <Input value = {name} setValue = {setName} type="text" placeholder="ФИО"/>
+                    <Input value = {email} setValue = {setEmail} type="text" placeholder="Почта"/>
+                    <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                     <button className="setting_btn_save" >Сохранить</button>
                     <button className="setting_btn_exit" >Выйти из профиля</button>
                 </div>

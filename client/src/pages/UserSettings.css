@@ -10,7 +10,7 @@ body{
 .settings{
     position: absolute;
     width: 306px;
-    height: 459px;
+    min-height: 700px;
     top: 35px;
     left: 50%;
     transform: translate(-50%);
@@ -23,7 +23,7 @@ body{
 
 .setting_photo_block{
     position: relative;
-    margin: 56px auto 0;
+    margin: 56px auto 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -53,26 +53,10 @@ body{
     white-space: nowrap;
 }
 
-.setting_inf_block{
-    margin: 80px auto;
-}
-.setting_inf_text{
-    color: #FFFFFF;
-    font-family: Bahnschrift, serif;
-    font-size: 16px;
-    text-align: center;
-    border: 1px solid #66FCF1;
-    border-radius: 5px;
-    margin: 25px auto 0;
-    height: auto;
-    width: auto;
-    padding: 8px;
-}
-
 .setting_btn_save{
     display: block;
     width: 180px;
-    margin: 50px auto 0;
+    margin: 30px auto 0;
     padding: 8px 8px;
     background: #66FCF1;
     color: #010101;

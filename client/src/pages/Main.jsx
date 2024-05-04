@@ -33,7 +33,7 @@ export const Main =() =>{
                 <div className="main_header">ОППЕНГЕЙМЕР</div>
                 <img src="src/img/poster_fil_oppen.jpg" className="film_poster"/>
                 <div className="main_text_genre">
-                    триллер, историческое произведение
+                    биография, драма, США, 3ч.
                 </div>
                 <div className="contain_text_info_film">
                     <p className="text_info_film">История жизни американского физика-теоретика Роберта Оппенгеймера, который

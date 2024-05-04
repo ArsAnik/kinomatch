@@ -1,16 +1,14 @@
-@import "materialize-css/dist/css/materialize.min.css";
-
 body{
     background-image: url("src/img/fon.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: repeat-y
 }
-.main{
+.inf{
     width: 100%;
     min-height: 900px;
 }
-.main_btn_block{
+.inf_btn_block{
     position: relative;
     width: 100%;
     margin: 30px auto 0;
@@ -21,60 +19,8 @@ body{
     align-items: center;
 }
 
-.checkbox_switch{
-    width: 97px;
-    height: 38px;
-    border-radius: 17px;
-    background: #1F2833;
-    display: flex;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: space-around;
-    align-items: center;
-}
 
-.switch_btn_option{
-    width: 35px;
-    height: 34px;
-    border-radius: 50%;
-    border: none;
-    background: none;
-}
-
-.switch_btn_option.active{
-    background: #66FCF1;
-}
-
-.img_option{
-    stroke: #66FCF1;
-    fill: rgba(0,0,0,0);
-}
-
-.active .img_option{
-    stroke: #1F2833;
-    fill: rgba(0,0,0,0);
-}
-
-.main_btn_list_film{
-    display: block;
-    width: 60px;
-    margin: 20px auto;
-    padding: 10px 10px;
-    background: none;
-    border: 1px solid #66FCF1;
-    border-radius: 5px;
-}
-
-.img_list_film{
-    top: 14px;
-    right: 18px;
-    bottom: 14px;
-    left: 18px;
-    width: 24px;
-    height: 24px;
-}
-
-.main_inf_film{
+.inf{
     position: absolute;
     width: 306px;
     height: 200px;
@@ -82,26 +28,25 @@ body{
     left: 50%;
     transform: translate(-50%, 0);
 }
-.main_header{
+.inf_header{
     color: #66FCF1;
     font-family: Zen Old Mincho, serif;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 42px;
     text-align: center;
     text-shadow: 3px -1px 18px #18B6AA;
 }
 
-.film_poster{
-    margin: 40px 10% 30px;
-    width: 80%;
+.inf_film_poster{
+    margin: 40px 20% 20px;
+    width: 60%;
     box-shadow: 0px 0px 47px #66FCF1;
-
 }
 
-.main_text_genre{
+.inf_text_genre{
     color: #FFFFFF;
     font-family: Zen Old Mincho, serif;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 22px;
     text-align: center;
     border: 1px solid #66FCF1;
@@ -110,7 +55,7 @@ body{
     padding-bottom: 10px;
 }
 
-.contain_text_info_film{
+.inf_contain_text_info_film{
     display: flex;
     align-items: center;
     background: rgba(197, 198, 199, 0.13);
@@ -122,10 +67,9 @@ body{
     padding: 15px 10px;
 }
 
-.text_info_film{
+.inf_text_info_film{
     font-family: Bahnschrift, serif;
     font-size: 16px;
     line-height: 22px;
     padding-bottom: 10px;
 }
-
