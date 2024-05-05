@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import './UserRegistration.css'
-import Input from "../components/input/input.jsx";
-import Button_back from "../components/button_back/button_back.jsx";
-import {registration} from "../action/user.js";
+import Input from "../../components/input/input.jsx";
+import Button_back from "../../components/button_back/button_back.jsx";
+import {registration} from "../../action/user.js";
 
 export const UserRegistration =() =>{
     const [login,setLogin] = useState("")

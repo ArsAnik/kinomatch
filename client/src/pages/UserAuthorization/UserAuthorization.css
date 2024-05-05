@@ -1,7 +1,7 @@
-@import "materialize-css/dist/css/materialize.min.css";
+@import "../../../node_modules/materialize-css/dist/css/materialize.min.css";
 
 body{
-    background-image: url("src/img/fon.jpg");
+    background-image: url("../../img/fon.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: repeat-y

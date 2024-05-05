@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './UserAuthorization.css'
-import Input from "../components/input/input.jsx";
-import Button_back from "../components/button_back/button_back.jsx";
+import Input from "../../components/input/input.jsx";
+import Button_back from "../../components/button_back/button_back.jsx";
 
 export const UserAuthorization =() =>{
     const [login,setLogin] = useState("")

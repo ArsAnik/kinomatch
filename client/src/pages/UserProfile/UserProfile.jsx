@@ -1,5 +1,5 @@
 import React from 'react'
-import Button_back from "../components/button_back/button_back.jsx";
+import Button_back from "../../components/button_back/button_back.jsx";
 import './UserProfile.css'
 
 export const UserProfile =() =>{

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './UserSettings.css'
-import Button_back from "../components/button_back/button_back.jsx";
-import Input from "../components/input/input.jsx";
+import Button_back from "../../components/button_back/button_back.jsx";
+import Input from "../../components/input/input.jsx";
 
 export const UserSettings =() =>{
     const [login,setLogin] = useState("yoyogikkk")

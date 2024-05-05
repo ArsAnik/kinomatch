@@ -1,7 +1,8 @@
 import React from 'react'
 import './Main.css'
-import Button_filters from "../components/button_filters/button_filters.jsx";
-import Button_profile from "../components/button_profile/button_profile.jsx";
+import Button_filters from "../../components/button_filters/button_filters.jsx";
+import Button_profile from "../../components/button_profile/button_profile.jsx";
+import Block_inf_film from "../../components/block_inf_film/block_inf_film.jsx";
 
 export const Main =() =>{
     return(
@@ -30,23 +31,13 @@ export const Main =() =>{
             </div>
 
             <div className="main_inf_film">
-                <div className="main_header">ОППЕНГЕЙМЕР</div>
-                <img src="src/img/poster_fil_oppen.jpg" className="film_poster"/>
-                <div className="main_text_genre">
-                    биография, драма, США, 3ч.
-                </div>
-                <div className="contain_text_info_film">
-                    <p className="text_info_film">История жизни американского физика-теоретика Роберта Оппенгеймера, который
-                        во времена Второй мировой войны
-                        руководил Манхэттенским
-                        проектом — секретными разработками
-                        ядерного оружия.
-                    </p>
-                </div>
+                <Block_inf_film header="Оппенгеймер" img="src/img/poster_fil_oppen.jpg" genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
                 <button className="main_btn_list_film">
                     <img src="src/img/icon_film.svg" className="img_list_film"/>
                 </button>
             </div>
+
+
         </div>
     );
 };

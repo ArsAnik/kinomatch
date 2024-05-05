@@ -1,0 +1,12 @@
+.btn_estimate{
+    border: 1px solid #66FCF1;
+    border-radius: 8px;
+    padding: 7px 10px;
+    background: none;
+    color: #66FCF1;
+    font-family: Bahnschrift, serif;
+    font-size: 19px;
+    line-height: 23px;
+    text-align: center;
+    margin-top: 18px;
+}
