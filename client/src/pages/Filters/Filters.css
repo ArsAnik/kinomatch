@@ -5,33 +5,29 @@ body{
     background-repeat: repeat-y
 }
 
-.inf_film{
+.filters{
     position: relative;
     width: 306px;
-    top: 10px;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%);
 }
 
-.inf_btn_block{
+.filters_btn_block{
     position: relative;
     width: 100%;
     margin: 30px auto 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
 }
 
-.block_acting{
-    position: relative;
-    height: 255px;
-    width:335px;
-    margin:30px 0;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    border: none;
+.filters_header{
+    color: #66FCF1;
+    font-family: Bahnschrift;
+    font-size: 33px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: center;
 }
-
-

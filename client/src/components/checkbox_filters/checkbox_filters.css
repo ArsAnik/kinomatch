@@ -1,0 +1,34 @@
+.filters_checkbox{
+    display:block;
+    position: relative;
+    margin: 8px 0;
+    width: 100%;
+    padding-left: 26px;
+}
+
+.checkbox_element{
+    appearance: none;
+    position:absolute;
+    top:2px;
+    left:0;
+    margin:0;
+    width:18px;
+    height: 18px;
+    border: 1px solid #66FCF1;
+    border-radius: 5px;
+}
+.checkbox_element:checked{
+    background-color: #66FCF1;
+}
+
+.checkbox_element:checked::before{
+    content: " ";
+    display: block;
+    position: absolute;
+    left:5px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #66FCF1;
+    transform-origin: 50% 50%;
+    transform: rotate(35deg);
+}

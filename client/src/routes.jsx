@@ -8,6 +8,9 @@ import {UserSettings} from "./pages/UserSettings/UserSettings.jsx";
 import ListLikedFilm from "./pages/ListLikedFilm/ListLikedFilm.jsx";
 import ListWatchedFilm from "./pages/ListWatchedFilm/ListWatchedFilm.jsx";
 import InfoFilm from "./pages/InfoFilm/InfoFilm.jsx";
+import Block_acting from "./components/block_acting/block_acting.jsx";
+import Acting from "./pages/Acting/Acting.jsx";
+import Filters from "./pages/Filters/Filters.jsx";
 
 
 export const useRoutes = isAuthenticated => {
@@ -28,6 +31,8 @@ export const useRoutes = isAuthenticated => {
             <Route path="/liked" element={<ListLikedFilm />}/>
             <Route path="/watched" element={<ListWatchedFilm />}/>
             <Route path="/film" element={<InfoFilm />}/>
+            <Route path="/acting" element={<Acting />}/>
+            <Route path="/filters" element={<Filters />}/>
         </Routes>
     )
 

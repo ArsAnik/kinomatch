@@ -1,0 +1,11 @@
+.acting_btn_back{
+    position: relative;
+    top: 28px;
+}
+.acting_block_all{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
