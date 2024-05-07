@@ -19,6 +19,12 @@ body{
     flex-direction: row;
     align-items: center;
 }
+.main_btn_filter{
+    margin-left:20px;
+}
+.main_btn_profile{
+    margin-right:20px;
+}
 
 .checkbox_switch{
     width: 97px;

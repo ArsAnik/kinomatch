@@ -21,7 +21,13 @@ body{
     flex-direction: row;
     align-items: center;
 }
+.profile_btn_back{
+    margin-left: 20px;
+}
 
+.profile_settings{
+    margin-right: 20px;
+}
 .profile_btn_settings{
     width: 45px;
     height: 45px;
@@ -31,6 +37,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .img_settings{

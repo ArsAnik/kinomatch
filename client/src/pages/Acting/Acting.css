@@ -1,8 +1,10 @@
 .acting_btn_back{
     position: relative;
     top: 28px;
+    margin-left: 20px;
 }
 .acting_block_all{
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

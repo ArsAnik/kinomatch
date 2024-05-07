@@ -24,6 +24,13 @@ body{
     align-items: center;
 }
 
+.inf_back{
+    margin-left: 20px;
+}
+
+.inf_profile{
+    margin-right: 20px;
+}
 .block_acting{
     position: relative;
     height: 255px;

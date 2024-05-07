@@ -17,6 +17,13 @@ body{
     align-items: center;
 }
 
+.liked_btn_back{
+    margin-left: 20px;
+}
+
+.liked_btn_filters{
+    margin-right:20px;
+}
 .liked{
     position: absolute;
     width: 306px;

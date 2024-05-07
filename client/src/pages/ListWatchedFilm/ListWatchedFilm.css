@@ -17,9 +17,16 @@ body{
     align-items: center;
 }
 
+.watched_btn_back{
+    margin-left: 20px;
+}
+
+.watched_btn_filters{
+    margin-right: 20px
+}
 .watched{
     position: absolute;
-    width: 306px;
+    width: 350px;
     min-height: 700px;
     top: 120px;
     left: 50%;

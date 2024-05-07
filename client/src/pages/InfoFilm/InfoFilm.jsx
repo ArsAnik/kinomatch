@@ -9,11 +9,16 @@ export const InfoFilm =() =>{
     return(
         <div className="inf_body">
             <div className="inf_btn_block">
-                <Button_back/>
-                <Button_profile/>
+                <div className="inf_back">
+                    <Button_back/>
+                </div>
+                <div className="inf_profile">
+                    <Button_profile/>
+                </div>
+
             </div>
             <div className="inf_film">
-                <Block_inf_film header="Оппенгеймер" img="src/img/poster_fil_oppen.jpg" genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
+                <Block_inf_film header="Оппенгеймер" img="src/img/poster_film.jpg" genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
                 <div className="block_acting">
                     <Block_acting/>
                 </div>
