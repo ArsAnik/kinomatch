@@ -1,0 +1,9 @@
+Запрос фильмов пользователя:
+
+https://api.vk.com/method/users.get?user_ids=156653889&fields=movies&access_token=388936033889360338893603963b9eaffd33889388936035d7c5a10d2ab570f622c9dfb&v=5.199
+
+
+Запрос групп пользователя:
+
+https://api.vk.com/method/users.getSubscriptions?user_id=156653889&access_token=388936033889360338893603963b9eaffd33889388936035d7c5a10d2ab570f622c9dfb&v=5.199
+

@@ -1,18 +1,18 @@
 const Film = require("../models/Film");
+const User = require("../models/User");
+const Genre = require("../models/Genre");
 const FilmWithScore = require("../models/FilmWithScore");
+const {json} = require("express");
 
 class FilmController {
 
-    async getFilmFullInf(req, res){
+    async getFilmInf(req, res){
         try {
+            const {id} = req.params;
 
-            const {id} = req.params.id;
+            const film = await Film.findById(id);
 
-            const film = await Film.findOne({id});
-
-            const films = await Film.find();
-
-            res.send({film, films});
+            res.send(film);
 
         } catch (e) {
             console.log(e);
@@ -20,16 +20,13 @@ class FilmController {
         }
     }
 
-    async getFilmShortInf(req, res){
+    async getFilmByGenre(req, res){
         try {
+            const genres = req.params.genres.split('&');
 
-            const {id} = req.params.id;
+            const films = await Film.find({genres: genres});
 
-            const film = await Film.find({_id: id}, {name: true, description: true, cover: true});
-
-            const films = await Film.find();
-
-            res.send({film, films});
+            res.send(films);
 
         } catch (e) {
             console.log(e);
@@ -37,53 +34,51 @@ class FilmController {
         }
     }
 
-    // async getFilm(req, res){
-    //     try {
-    //         const {genre} = req.params.genre;
-    //         const {actor} = req.params.actor;
-    //         const {director} = req.params.director;
-    //
-    //         const film = await Film.find({genre: genre, acting: });
-    //
-    //         res.send();
-    //
-    //     } catch (e) {
-    //         console.log(e);
-    //         res.send({message: "Server error"});
-    //     }
-    // }
+    async getFilmInf(req, res){
+        try {
+            const {id} = req.params;
+
+            const film = await Film.findById(id);
+
+            res.send(film);
+
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Server error"});
+        }
+    }
+
+    async getFilms(req, res){
+        try {
+            const films = await Film.find({});
+
+            res.send(films);
+
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Server error"});
+        }
+    }
+
+    async getFilmByYear(req, res){
+        try {
+            const {year} = req.params;
+
+            const film = await Film.find({year: year});
+
+            res.send(film);
+
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Server error"});
+        }
+    }
 
     async getGenres(req, res){
         try {
 
-            const genres = await Genre.find({_id: id});
+            const genres = await Genre.find();
             res.send({genres});
-
-        } catch (e) {
-            console.log(e);
-            res.send({message: "Server error"});
-        }
-    }
-
-    async getActing(req, res){
-        try {
-
-            const acting = await Acting.find({}, {name: true, photo: true});
-            res.send({acting});
-
-        } catch (e) {
-            console.log(e);
-            res.send({message: "Server error"});
-        }
-    }
-
-    async getActingInf(req, res){
-        try {
-            const {id} = req.params;
-
-            const actingInf = await Acting.findById(id);
-            console.log(actingInf);
-            res.send({actingInf});
 
         } catch (e) {
             console.log(e);
@@ -93,22 +88,38 @@ class FilmController {
 
     async addWantToWatch(req, res){
         try {
+            const userId = '661f9353b488840e7989ea47';
+            const filmId = '661f6315877a005f3b04b41c';
 
-            const userId = 1;
-            const {film} = req.body;
+            const scoredFilm = new FilmWithScore({
+                film: filmId,
+                isWatch: false,
+                isWanted: true
+            });
 
+            await scoredFilm.save();
 
+            await User.findByIdAndUpdate(
+                userId,
+                {$addToSet: {films: scoredFilm}});
 
+            res.send(scoredFilm);
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});
         }
     }
 
-    async getWantedFilms(req, res){
+    async getUserFilms(req, res){
         try {
+            const userId = '661f9353b488840e7989ea47';
 
+            const userFilms = await User.findOne(
+                {_id: userId},
+                {films: 1}
+            );
 
+            res.send(userFilms);
 
         } catch (e) {
             console.log(e);
