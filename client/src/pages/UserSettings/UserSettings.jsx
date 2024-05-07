@@ -3,6 +3,8 @@ import './UserSettings.css'
 import Button_back from "../../components/button_back/button_back.jsx";
 import Input from "../../components/input/input.jsx";
 
+import profile_photo from "../../img/profile_photo.jpg";
+
 export const UserSettings =() =>{
     const [login,setLogin] = useState("yoyogikkk")
     const [name,setName] = useState("Дорогова Дарья Дмитриевна")
@@ -17,7 +19,7 @@ export const UserSettings =() =>{
             <div className="settings">
                 <div className="setting_photo_block">
                     <div className="setting_photo">
-                        <img src="src/img/profile_photo.jpg" className="img_setting_photo"/>
+                        <img src={profile_photo} className="img_setting_photo"/>
                     </div>
                     <div className="section_btn_photo">
                         <button className="btn_photo">Изменить фото</button>
@@ -29,7 +31,7 @@ export const UserSettings =() =>{
                     <Input value = {email} setValue = {setEmail} type="text" placeholder="Почта"/>
                     <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                     <button className="setting_btn_save" >Сохранить</button>
-                    <button className="setting_btn_exit" >Выйти из профиля</button>
+                    <a href={"/authorization"} className="setting_btn_exit" >Выйти из профиля</a>
                 </div>
             </div>
 

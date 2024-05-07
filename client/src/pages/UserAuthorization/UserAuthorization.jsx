@@ -18,8 +18,8 @@ export const UserAuthorization =() =>{
                     <Input value = {login} setValue = {setLogin} type="text" placeholder="Логин" />
                     <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                 </div>
-                <button className="authorization_btn" >Войти</button>
-                <button className="reg_in_auth_btn" >Зарегистрироваться</button>
+                <a href={"/"} className="authorization_btn" >Войти</a>
+                <a href={"/registration"} className="reg_in_auth_btn" >Зарегистрироваться</a>
             </div>
         </div>
     );

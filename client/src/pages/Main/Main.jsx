@@ -4,6 +4,9 @@ import Button_filters from "../../components/button_filters/button_filters.jsx";
 import Button_profile from "../../components/button_profile/button_profile.jsx";
 import Block_inf_film from "../../components/block_inf_film/block_inf_film.jsx";
 
+import icon_film from "../../img/icon_film.svg";
+import poster_film from "../../img/poster_film.jpg";
+
 export const Main =() =>{
     return(
         <div className="main">
@@ -31,12 +34,11 @@ export const Main =() =>{
             </div>
 
             <div className="main_inf_film">
-                <Block_inf_film header="Оппенгеймер" img="src/img/poster_fil_oppen.jpg" genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
-                <button className="main_btn_list_film">
-                    <img src="src/img/icon_film.svg" className="img_list_film"/>
-                </button>
+                <Block_inf_film header="Оппенгеймер" img={poster_film} genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
+                <a href={"/liked"} className="main_btn_list_film">
+                    <img src={icon_film} className="img_list_film" alt="Подобранные фильмы"/>
+                </a>
             </div>
-
 
         </div>
     );
