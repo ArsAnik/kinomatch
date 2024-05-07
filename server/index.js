@@ -27,7 +27,7 @@ const start = async () => {
            // insertData.dropAllData();
            //insertData.insertGenreData();
            //insertData.insertFilmData();
-            insertData.insertUserData();
+           //insertData.insertUserData();
         });
 
     }catch (e){
