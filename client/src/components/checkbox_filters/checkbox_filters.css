@@ -1,5 +1,5 @@
 .filters_checkbox{
-    display:block;
+    display:flex;
     position: relative;
     margin: 8px 0;
     width: 100%;
@@ -9,7 +9,6 @@
 .checkbox_element{
     appearance: none;
     position:absolute;
-    top:2px;
     left:0;
     margin:0;
     width:18px;
@@ -25,10 +24,19 @@
     content: " ";
     display: block;
     position: absolute;
+    top:0px;
     left:5px;
-    width: 15px;
-    height: 15px;
-    border: 1px solid #66FCF1;
+    width: 3px;
+    height: 8px;
+    border: 3px solid transparent;
+    border-bottom-color:#1F2833;
+    border-right-color: #1F2833;
     transform-origin: 50% 50%;
     transform: rotate(35deg);
+}
+.text_checkbox{
+    color: #66FCF1;
+    font-family: Bahnschrift;
+    font-size: 17px;
+    text-align: center;
 }
