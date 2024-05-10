@@ -8,6 +8,26 @@ import icon_film from "../../img/icon_film.svg";
 import poster_film from "../../img/poster_film.jpg";
 
 export const Main =() =>{
+
+    // To move the card as the user drags the cursor
+    //const motionValue = useMotionValue(0);
+
+    // To rotate the card as the card moves on drag
+    // const rotateValue = useTransform(motionValue, [-200, 200], [-50, 50]);
+    //
+    // // To decrease opacity of the card when swiped
+    // // on dragging card to left(-200) or right(200)
+    // // opacity gradually changes to 0
+    // // and when the card is in center opacity = 1
+    // const opacityValue = useTransform(
+    //     motionValue,
+    //     [-200, -150, 0, 150, 200],
+    //     [0, 1, 1, 1, 0]
+    // );
+    //
+    // // Framer animation hook
+    // const animControls = useAnimation();
+
     return(
         <div className="main">
             <div className="main_btn_block">
@@ -32,13 +52,31 @@ export const Main =() =>{
                     <Button_profile/>
                 </div>
             </div>
+            <div className="main_block">
+                <button className="btn_no">
+                    <svg width="40.000000" height="40.000000" viewBox="6 1 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path id="path" d="M30.09 32.68L30.12 32.68C30.71 33.28 30.71 34.21 30.12 34.81C29.52 35.4 28.59 35.4 28 34.81L28 34.78L30.09 32.68ZM28 10.21L28 10.18C28.59 9.59 29.52 9.59 30.12 10.18C30.71 10.78 30.71 11.71 30.12 12.31L30.09 12.31L28 10.21Z" fill="#000000" fill-opacity="0" fill-rule="nonzero"/>
+                        <path id="path" d="M29.06 33.75L17.81 22.5L29.06 11.25" stroke="#232424" stroke-opacity="1.000000" stroke-width="3.000000" stroke-linejoin="round" stroke-linecap="round"/>
+                    </svg>
+                </button>
 
-            <div className="main_inf_film">
-                <Block_inf_film header="Оппенгеймер" img={poster_film} genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
-                <a href={"/liked"} className="main_btn_list_film">
-                    <img src={icon_film} className="img_list_film" alt="Подобранные фильмы"/>
+                <a href={"/film"} className="main_inf_film">
+                    <Block_inf_film header="Оппенгеймер" img={poster_film} genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
                 </a>
+
+                <button className="btn_yes">
+                    <svg width="40.000000" height="40.000000" viewBox="0 2 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path id="path" d="M14.9 12.31L14.87 12.31C14.28 11.71 14.28 10.78 14.87 10.18C15.47 9.59 16.4 9.59 16.99 10.18L16.99 10.21L14.9 12.31ZM16.99 34.78L16.99 34.81C16.4 35.4 15.47 35.4 14.87 34.81C14.28 34.21 14.28 33.28 14.87 32.68L14.9 32.68L16.99 34.78Z" fill="#000000" fill-opacity="0" fill-rule="nonzero"/>
+                        <path id="path" d="M15.93 11.25L27.18 22.5L15.93 33.75" stroke="#232424" stroke-opacity="1.000000" stroke-width="3.000000" stroke-linejoin="round" stroke-linecap="round"/>
+                    </svg>
+                </button>
             </div>
+
+
+
+            <a href={"/liked"} className="main_btn_list_film">
+                <img src={icon_film} className="img_list_film" alt="Подобранные фильмы"/>
+            </a>
 
         </div>
     );

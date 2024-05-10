@@ -1,10 +1,10 @@
 .btn_estimate{
-    border: 1px solid #66FCF1;
+    border: 1px solid var(--color_azure);
     border-radius: 8px;
     padding: 7px 10px;
     background: none;
-    color: #66FCF1;
-    font-family: Bahnschrift, serif;
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
     font-size: 19px;
     line-height: 23px;
     text-align: center;

@@ -1,15 +1,10 @@
-body{
-    background-image: url("../../img/fon.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: repeat-y
-}
 
 .filters{
     position: relative;
     width: 306px;
     left: 50%;
     transform: translate(-50%);
+    margin-top: 30px;
 }
 
 .filters_btn_block{
@@ -24,10 +19,85 @@ body{
 }
 
 .filters_header{
-    color: #66FCF1;
-    font-family: Bahnschrift;
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
     font-size: 33px;
     font-weight: 400;
     line-height: 40px;
     text-align: center;
+}
+
+.filter_main_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 305px;
+    margin: 0 auto;
+
+}
+.name_filters{
+    border: 1px solid var(--color_azure);
+    border-radius: 8px;
+    padding: 4px 20px;
+    background: var(--color_azure);
+    font-family: var(--font_Bahn);
+    color: var(--color_grey);
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+
+
+}
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter_checkbox{
+    margin-right: 20px;
+}
+
+.text_check{
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
+    font-size: 17px;
+    text-align: center;
+}
+
+.checkbox_square{
+    margin: 10px;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color_azure);
+}
+
+.btn_save{
+    border: 1px solid var(--color_azure);
+    border-radius: 8px;
+    padding: 4px 20px;
+    background: var(--color_azure);
+    font-family: var(--font_Bahn);
+    color: var(--color_grey);
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn_cancel{
+    border: 1px solid var(--color_azure);
+    border-radius: 8px;
+    padding: 4px 20px;
+    background: none;
+    font-family: var(--font_Bahn);
+    color: var(--color_azure);
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+    margin-top: 20px;
 }

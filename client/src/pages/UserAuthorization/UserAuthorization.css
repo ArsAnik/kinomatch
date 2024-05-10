@@ -1,10 +1,4 @@
 
-body{
-    background-image: url("../../img/fon.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: repeat-y
-}
 .authorization_btn_back{
     position: relative;
     top: 28px;
@@ -20,8 +14,8 @@ body{
 }
 
 .authorization_header{
-    color: #66FCF1;
-    font-family: Bahnschrift;
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
     font-size: 52px;
     line-height: 62px;
     text-align: center;
@@ -38,9 +32,9 @@ body{
     width: 189px;
     margin: 50px auto 0;
     padding: 10px 10px;
-    background: #66FCF1;
-    color: #010101;
-    font-family: Bahnschrift, serif;
+    background: var(--color_azure);
+    color: var(--color_black);
+    font-family: var(--font_Bahn);
     font-size: 26px;
     line-height: 20px;
     text-align: center;
@@ -52,10 +46,10 @@ body{
     margin: 50px auto 0;
     padding: 10px 10px;
     background: none;
-    border: 1px solid #66FCF1;
+    border: 1px solid var(--color_azure);
     border-radius: 14px;
-    color: #66FCF1;
-    font-family: Bahnschrift, serif;
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
     font-size: 26px;
     line-height: 20px;
     text-align: center;

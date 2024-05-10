@@ -1,11 +1,4 @@
 
-body{
-    background-image: url("../../img/fon.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: repeat-y
-}
-
 .profile{
     width: 100%;
     min-height: 600px;
@@ -31,7 +24,7 @@ body{
 .profile_btn_settings{
     width: 45px;
     height: 45px;
-    background: #1F2833;
+    background: var(--color_grey);
     border-radius: 50%;
     border:none;
     display: flex;
@@ -41,7 +34,7 @@ body{
 }
 
 .img_settings{
-    stroke: #66FCF1;
+    stroke: var(--color_azure);
 }
 
 .profile_center_block{
@@ -59,15 +52,15 @@ body{
 .img_profile_photo{
     width: 100%;
     border-radius: 50%;
-    box-shadow: 0px 0px 47px #66FCF1;
+    box-shadow: 0px 0px 47px var(--color_azure);
 }
 
 .profile_login{
-    color: #FFFFFF;
-    font-family: Bahnschrift, serif;
+    color: var(--color_text_white);
+    font-family: var(--font_Bahn);
     font-size: 14px;
     text-align: center;
-    border: 1px solid #66FCF1;
+    border: 1px solid var(--color_azure);
     border-radius: 10px;
     margin: 25px auto 80px;
     height: auto;
@@ -77,11 +70,11 @@ body{
 
 .profile_btn_film{
     position: relative;
-    border: 1px solid #66FCF1;
+    border: 1px solid var(--color_azure);
     border-radius: 10px;
     background: none;
     margin: 20px;
-    color: #FFFFFF;
+    color: var(--color_text_white);
     display: flex;
     align-items: center;
 }
@@ -90,7 +83,7 @@ body{
     margin-left: 20px;
 }
 .text_btn_film{
-    font-family: Bahnschrift;
+    font-family: var(--font_Bahn);
     font-size: 22px;
     font-weight: 400;
     line-height: 26px;

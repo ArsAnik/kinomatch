@@ -1,8 +1,25 @@
 @import 'reset-css/reset.css';
+body{
+    background-image: url("img/fon.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat-y
+}
 
 a{
     text-decoration: none;
 }
 a, button{
     cursor: pointer;
+}
+
+:root{
+    --color_azure:#66FCF1;
+    --color_grey:#1F2833;
+    --color_red:#DB2F2F;
+    --color_green:#3BF269;
+    --color_text_white:#FFFFFF;
+    --color_black:#010101;
+    --serif_Minho:Zen Old Mincho, serif;
+    --font_Bahn:Bahnschrift, serif;
 }

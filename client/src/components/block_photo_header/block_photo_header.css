@@ -19,12 +19,12 @@
 }
 
 .poster_film{
-    box-shadow: 0px 0px 30px #66FCF1;
+    box-shadow: 0px 0px 30px var(--color_azure);
 
 }
 .header_film{
-    color: #FFFFFF;
-    font-family: Zen Old Mincho;
+    color: var(--color_text_white);
+    font-family: var(--serif_Minho);
     font-size: 22px;
     font-weight: 400;
     text-align: center;

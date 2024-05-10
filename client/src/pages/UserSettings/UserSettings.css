@@ -1,11 +1,4 @@
 
-body{
-    background-image: url("../../img/fon.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: repeat-y
-}
-
 .settings{
     position: absolute;
     width: 306px;
@@ -34,7 +27,7 @@ body{
 .img_setting_photo{
     width: 70%;
     border-radius: 50%;
-    box-shadow: 0px 0px 47px #66FCF1;
+    box-shadow: 0px 0px 47px var(--color_azure);
     margin-left: 20px;
 }
 
@@ -42,11 +35,11 @@ body{
     margin-right: 10px;
 }
 .btn_photo{
-    color: #FFFFFF;
-    font-family: Bahnschrift, serif;
+    color: var(--color_text_white);
+    font-family: var(var(--serif_Minho));
     font-size: 16px;
     text-align: center;
-    border: 1px solid #66FCF1;
+    border: 1px solid var(--color_azure);
     border-radius: 10px;
     background: none;
     padding: 4px 7px;
@@ -58,9 +51,9 @@ body{
     width: 180px;
     margin: 30px auto 0;
     padding: 8px 8px;
-    background: #66FCF1;
-    color: #010101;
-    font-family: Bahnschrift, serif;
+    background: var(--color_azure);
+    color: var(--color_black);
+    font-family: var(var(--serif_Minho));
     font-size: 23px;
     line-height: 20px;
     text-align: center;
@@ -75,10 +68,10 @@ body{
     margin: 30px auto 0;
     padding: 8px 8px;
     background: none;
-    border: 1px solid #66FCF1;
+    border: 1px solid var(--color_azure);
     border-radius: 14px;
-    color: #66FCF1;
-    font-family: Bahnschrift, serif;
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
     font-size: 23px;
     line-height: 20px;
     text-align: center;

@@ -1,6 +1,8 @@
+
+
 .inf_header{
-    color: #66FCF1;
-    font-family: Zen Old Mincho, serif;
+    color: var(--color_azure);
+    font-family: var(--serif_Minho);
     font-size: 28px;
     line-height: 42px;
     text-align: center;
@@ -11,16 +13,16 @@
 .inf_film_poster{
     margin: 40px 20% 20px;
     width: 60%;
-    box-shadow: 0px 0px 47px #66FCF1;
+    box-shadow: 0px 0px 47px var(--color_azure);
 }
 
 .inf_text_genre{
-    color: #FFFFFF;
-    font-family: Zen Old Mincho, serif;
+    color: var(--color_text_white);
+    font-family: var(--serif_Minho);
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    border: 1px solid #66FCF1;
+    border: 1px solid var(--color_azure);
     border-radius: 10px;
     margin: 20px;
     padding: 5px 5px 7px;
@@ -31,14 +33,16 @@
     align-items: center;
     background: rgba(197, 198, 199, 0.13);
     height: auto;
+
     border-radius: 10px;
     text-align: center;
     color: #FFF;
     padding: 15px 10px;
+    margin:0 auto;
 }
 
 .inf_text_info_film{
-    font-family: Bahnschrift, serif;
+    font-family: var(--font_Bahn);
     font-size: 16px;
     line-height: 22px;
 }

@@ -14,7 +14,7 @@
     margin: 25px 25px 0;
     padding: 10px 10px;
     background: none;
-    border: 1px solid #66FCF1;
+    border: 1px solid var(--color_azure);
     border-radius: 6px;
     display: flex;
     justify-content: center;

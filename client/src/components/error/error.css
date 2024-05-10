@@ -1,0 +1,26 @@
+.error{
+    position: absolute;
+    width: 306px;
+    height: 459px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.name_error{
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
+    font-size: 130px;
+    line-height: 62px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.text_error{
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    margin-top:50px;
+}

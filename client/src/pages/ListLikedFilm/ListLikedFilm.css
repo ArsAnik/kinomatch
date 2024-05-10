@@ -1,11 +1,4 @@
 
-body{
-    background-image: url("../../img/fon.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: repeat-y
-}
-
 .liked_btn_block{
     position: relative;
     width: 100%;
@@ -26,9 +19,9 @@ body{
 }
 .liked{
     position: absolute;
-    width: 306px;
+    width: 305px;
     min-height: 700px;
     top: 120px;
-    left: 50%;
-    transform: translate(-50%);
+    left: 60%;
+    transform: translate(-60%);
 }

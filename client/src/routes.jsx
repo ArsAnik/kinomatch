@@ -11,6 +11,7 @@ import InfoFilm from "./pages/InfoFilm/InfoFilm.jsx";
 import Block_acting from "./components/block_acting/block_acting.jsx";
 import Acting from "./pages/Acting/Acting.jsx";
 import Filters from "./pages/Filters/Filters.jsx";
+import Error from "./components/error/error.jsx";
 
 
 export const useRoutes = isAuthenticated => {
@@ -33,6 +34,7 @@ export const useRoutes = isAuthenticated => {
             <Route path="/film" element={<InfoFilm />}/>
             <Route path="/acting" element={<Acting />}/>
             <Route path="/filters" element={<Filters />}/>
+            <Route path="/errors" element={<Error name="404" />}/>
         </Routes>
     )
 

@@ -10,15 +10,15 @@
 }
 
 .acting_photo{
-    box-shadow: 0px 0px 15px #66FCF1;
+    box-shadow: 0px 0px 15px var(--color_azure);
     width: 53px;
     height: 57px;
 
 }
 
 .acting_text{
-    color: #FFFFFF;
-    font-family: Bahnschrift;
+    color: var(--color_text_white);
+    font-family: var(--font_Bahn);
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;

@@ -1,11 +1,4 @@
 
-
-body{
-    background-image: url("../../img/fon.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: repeat-y
-}
 .registration_btn_back{
     position: relative;
     top: 28px;
@@ -23,8 +16,8 @@ body{
 }
 
 .registration_header{
-    color: #66FCF1;
-    font-family: Bahnschrift, serif;
+    color: var(--color_azure);
+    font-family: var(--font_Bahn);
     font-size: 52px;
     line-height: 62px;
     text-align: center;
@@ -40,10 +33,10 @@ body{
     width: 286px;
     margin: 50px auto 0;
     padding: 10px 10px;
-    font-family: Bahnschrift, serif;
+    font-family: var(--font_Bahn);
     font-size: 26px;
-    background: #66FCF1;
-    color: #010101;
+    background: var(--color_azure);
+    color: var(--color_black);
     text-align: center;
     border-radius: 14px;
 }

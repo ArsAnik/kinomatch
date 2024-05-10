@@ -1,7 +1,7 @@
 .button_filters {
     width: 45px;
     height: 45px;
-    background: #1F2833;
+    background: var(--color_grey);
     border-radius: 50%;
     border:none;
     display: flex;
@@ -10,6 +10,6 @@
 }
 
 .img_btn_filters{
-    stroke: #66FCF1;
-    fill: #66FCF1;
+    stroke: var(--color_azure);
+    fill: var(--color_azure);
 }
