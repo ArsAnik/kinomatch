@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './UserRegistration.css'
 import Input from "../../components/input/input.jsx";
 import Button_back from "../../components/button_back/button_back.jsx";
-import {registration} from "../../action/user.js";
+import {registration} from "../../action/user";
 
 export const UserRegistration =() =>{
     const [login,setLogin] = useState("")
@@ -23,7 +23,7 @@ export const UserRegistration =() =>{
                     <Input value = {email} setValue = {setEmail} type="text" placeholder="Почта"/>
                     <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                 </div>
-                <a className="registration_btn" href={"/"}>Зарегистрироваться</a>
+                <a className="registration_btn" onClick={() => registration(email, name, login, password)} href={"/authorization"}>Зарегистрироваться</a>
             </div>
         </div>
     );

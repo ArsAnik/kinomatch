@@ -12,13 +12,15 @@ class AuthController {
                 return res.status(400).json({message: "Uncorrected request", errors});
             }
 
-            const {email, login, password} = req.body;
+            const {email,name, login, password} = req.body;
 
             const userByEmail = await User.findOne({email});
 
             if (userByEmail !== null) {
                 return res.status(400).json({message: `User with email ${email} already exist`});
             }
+
+            const userByName = await User.findOne({name});
 
             const userByLogin = await User.findOne({login});
 
@@ -27,7 +29,7 @@ class AuthController {
             }
 
             const hashPassword = await bcrypt.hash(password, 15);
-            const user = new User({email, login, password: hashPassword});
+            const user = new User({email, name, login, password: hashPassword});
             await user.save();
             return res.json({message: "User was successfully created"});
 
