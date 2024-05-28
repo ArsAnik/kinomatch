@@ -1,11 +1,15 @@
 import React, {useState} from 'react'
+import {useDispatch} from "react-redux"
 import './UserAuthorization.css'
 import Input from "../../components/input/input.jsx";
 import Button_back from "../../components/button_back/button_back.jsx";
+import {authorization} from "../../action/user.js";
+
 
 export const UserAuthorization =() =>{
     const [login,setLogin] = useState("")
     const [password,setPassword] = useState("")
+    const dispatch= useDispatch();
 
     return(
         <div className="authorization_body">
@@ -18,7 +22,7 @@ export const UserAuthorization =() =>{
                     <Input value = {login} setValue = {setLogin} type="text" placeholder="Логин" />
                     <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                 </div>
-                <a href={"/"} className="authorization_btn" >Войти</a>
+                <a className="authorization_btn" onClick={() => dispatch(authorization(login, password))}>Войти</a>
                 <a href={"/registration"} className="reg_in_auth_btn" >Зарегистрироваться</a>
             </div>
         </div>
@@ -26,3 +30,5 @@ export const UserAuthorization =() =>{
 };
 
 export default UserAuthorization;
+
+//href={"/profile"}
