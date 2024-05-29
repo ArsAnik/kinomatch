@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require('express-validator');
+const jwt = require("jsonwebtoken");
+const config = require("nodemon/lib/config");
 
 class AuthController {
 
@@ -28,7 +30,7 @@ class AuthController {
                 return res.status(400).json({message: `User with login ${login} already exist`});
             }
 
-            const hashPassword = await bcrypt.hash(password, 15);
+            const hashPassword = await bcrypt.hash(password, 5);
             const user = new User({email, name, login, password: hashPassword});
             await user.save();
             return res.json({message: "User was successfully created"});
@@ -51,19 +53,51 @@ class AuthController {
 
             const user = await User.findOne({login});
             if (user === null) {
-                return res.status(400).json({message: `User with login ${login} don't exist`})
+                return res.status(404).json({message: `User with login ${login} don't exist`})
             }
 
             const isValidPassword = bcrypt.compareSync(password, user.password);
             if (!isValidPassword) {
-                return res.json({ is_error: true, error: `Wrong password` });
+                return res.status(400).json({error: `Wrong password` });
             }
 
             return res.json({message: "User logged in"});
 
+            const token = jwt.sign({_id:user.id}, config.get("secretKey"),{expiresIn: "1h"});
+            return res.json({
+                token,
+                user:{
+                    id: user.id,
+                    email: user.email,
+                    diskSpace:user.diskSpace,
+                    usedSpace:user.usedSpace,
+                    avatar: user.avatar
+                }
+            })
+
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});
+        }
+    }
+
+    async auth(req, res) {
+        try{
+            const user = await User.findOne({id:req.user.id})
+            const token = jwt.sign({_id:user.id}, config.get("secretKey"),{expiresIn: "1h"});
+            return res.json({
+                token,
+                user:{
+                    id: user.id,
+                    email: user.email,
+                    diskSpace:user.diskSpace,
+                    usedSpace:user.usedSpace,
+                    avatar: user.avatar
+                }
+            })
+        } catch (e) {
+            console.log(e);
+            //res.send({message: "Server error"});
         }
     }
 }
