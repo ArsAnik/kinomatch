@@ -10,9 +10,6 @@ const PORT = config.get("server.port");
 const corsMiddleware = require("./middleware/cors.middleware")
 app.use(fileUpload({}));
 
-const insertData = require("./database_operations/insertData");
-
-
 app.use(corsMiddleware);
 app.use(express.json());
 app.use("/auth", authRouter);
@@ -26,10 +23,6 @@ const start = async () => {
 
         app.listen(PORT, () => {
            console.log("Server started on port ", PORT);
-           // insertData.dropAllData();
-           //insertData.insertGenreData();
-           //insertData.insertFilmData();
-           //insertData.insertUserData();
         });
 
     }catch (e){

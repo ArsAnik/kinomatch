@@ -24,24 +24,9 @@ class FilmController {
         try {
             const genres = req.params.genres.split('&');
 
-            const films = await Film.find({genres: genres});
+            const films = await Film.find({"genres.name": { $all: genres }}).limit(10);
 
             res.send(films);
-
-        } catch (e) {
-            console.log(e);
-            res.send({message: "Server error"});
-        }
-    }
-
-    async getFilmInf(req, res){
-        try {
-            const {id} = req.params;
-
-            const film = await Film.findById(id);
-
-            res.send(film);
-
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});
@@ -50,10 +35,9 @@ class FilmController {
 
     async getFilms(req, res){
         try {
-            const films = await Film.find({});
+            const films = await Film.find({}).limit(1);
 
-            res.send(films);
-
+            res.send(films[0]);
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});
@@ -88,8 +72,7 @@ class FilmController {
 
     async addWantToWatch(req, res){
         try {
-            const userId = '661f9353b488840e7989ea47';
-            const filmId = '661f6315877a005f3b04b41c';
+            const {userId, filmId} = req.body;
 
             const scoredFilm = new FilmWithScore({
                 film: filmId,

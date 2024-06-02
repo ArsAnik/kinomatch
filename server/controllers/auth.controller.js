@@ -68,6 +68,7 @@ class AuthController {
                 user:{
                     id: user.id,
                     name: user.name,
+                    login: user.login,
                     avatar: user.avatar
                 }
             })
