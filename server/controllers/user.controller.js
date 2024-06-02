@@ -56,10 +56,10 @@ class UserController {
 
     async changeUserAvatar(req, res){
         try {
-            const {id} = req.user;
-            const {file} = req.files;
+            const {_id} = req.user;
+            const file = req.files.file;
 
-            const user = await User.findById(id);
+            const user = await User.findById(_id);
             const avatarName = Uuid.v4() + ".jpg";
             await file.mv(config.get('staticPath') + "\\" + avatarName);
             user.avatar = avatarName;

@@ -6,14 +6,22 @@ import {useDispatch, useSelector} from "react-redux";
 import default_photo from "../../img/default_photo.jpg";
 import {logout} from "../../reducers/userReducer.js";
 import {Link} from "react-router-dom";
+import {authorization, updateAvatar, updateUser} from "../../action/user.js";
+import {static_path} from "../../../config.js";
 
 
 export const UserSettings =() =>{
     const AvatarUser = useSelector(state => state.user.currentUser.avatar)
     const NameUser = useSelector(state => state.user.currentUser.name)
+    const id = useSelector(state => state.user.currentUser.id)
     const [name,setName] = useState(NameUser)
     const dispatch= useDispatch();
 
+
+    function changeHandler(e) {
+        const file = e.target.files[0]
+        dispatch(updateAvatar(id, file))
+    }
 
     return(
         <div className="settings_body">
@@ -24,17 +32,22 @@ export const UserSettings =() =>{
                 <div className="setting_photo_block">
                     <div className="setting_photo">
                         {AvatarUser
-                            ? <img src={AvatarUser} className="img_setting_photo"/>
+                            ? <img src={static_path + AvatarUser} className="img_setting_photo"/>
                             : <img src={default_photo} className="img_setting_photo"/>
                         }
                     </div>
                     <div className="section_btn_photo">
-                        <button className="btn_photo">Изменить фото</button>
+                        <label for="fileInput" className="btn_photo">Изменить фото
+                        <input id="fileInput" type="file" accept="image/*" onChange={e => changeHandler(e)} multiple/>
+                        </label>
                     </div>
                 </div>
                 <div className="setting_inf_block">
                     <Input value = {name} setValue = {setName} type="text" placeholder="ФИО"/>
-                    <a className="setting_btn_save" >Сохранить</a>
+                    <Link to="/settings">
+                        <a className="setting_btn_save" onClick={() => dispatch(updateUser(id,name)) }>Сохранить</a>
+                    </Link>
+
                     <Link to="/authorization">
                         <a className="setting_btn_exit" onClick={() => dispatch(logout())}>Выйти из профиля</a>
                     </Link>

@@ -2,8 +2,8 @@
   "server": {
     "port": 5000,
     "dbURL": "mongodb+srv://arsanikin:wMnLY2PaWOIUjTRb@kinomatch.uwlh4md.mongodb.net/?retryWrites=true&w=majority&appName=kinomatch",
-    "secretKey": "mern-secket-key"
+    "secretKey": "mern-secret-key"
   },
   "kinopoiskAPI": "DY4SN14-T8G4MM0-P1E9FRK-TVMPNZR",
-  "path": "C:\\Web_project\\files"
+  "staticPath": "C:\\Kinomatcha\\kinomatch\\client\\files"
 }

@@ -1,5 +1,7 @@
 import axios from "axios";
-import {setUser} from "../reducers/userReducer.js";
+import {setUser, UpdateUser} from "../reducers/userReducer.js";
+import {useSelector} from "react-redux";
+
 
 export const registration = async(email, name, login, password) => {
     try{
@@ -30,11 +32,42 @@ export const authorization = (login, password) => {
 export const auth = () => {
     return async dispatch => {
         try{
-            const response = await axios.post('http://localhost:5000/auth/auth',  {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+            const response = await axios.get('http://localhost:5000/auth/auth',  {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
         } catch (e) {
             localStorage.removeItem('token')
+        }
+    }
+
+}
+
+
+export const updateUser = (id,name) => {
+    return async dispatch => {
+        try{
+            await axios.patch('http://localhost:5000/user/updateUser',
+                {id, name})
+            console.log(id,name)
+            dispatch(UpdateUser(id,name))
+            //localStorage.setItem('token', response.data.token)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+}
+
+export const updateAvatar = (id,file) => {
+    return async dispatch => {
+        try{
+            let formData = new FormData()
+            formData.append('file', file)
+            const response = await axios.post('http://localhost:5000/user/changeUserAvatar', formData, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}});
+            console.log(response.data);
+            dispatch(setUser(response.data))
+        } catch (e) {
+            console.log(e)
         }
     }
 

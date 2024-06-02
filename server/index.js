@@ -7,11 +7,9 @@ const userRouter = require("./routes/user.router");
 const config = require("config");
 const app = express();
 const PORT = config.get("server.port");
-const corsMiddleware = require("./middleware/cors.middleware")
+const corsMiddleware = require("./middleware/cors.middleware");
+
 app.use(fileUpload({}));
-
-const insertData = require("./database_operations/insertData");
-
 
 app.use(corsMiddleware);
 app.use(express.json());

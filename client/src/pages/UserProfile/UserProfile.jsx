@@ -5,6 +5,7 @@ import './UserProfile.css'
 import default_photo from '../../img/default_photo.jpg';
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {static_path} from "../../../config.js";
 
 export const UserProfile =() =>{
 
@@ -34,7 +35,7 @@ export const UserProfile =() =>{
             <div className="profile_center_block">
                 <div className="profile_photo">
                     {AvatarUser
-                        ? <img src={AvatarUser} className="img_profile_photo"/>
+                        ? <img src={static_path + AvatarUser} className="img_profile_photo"/>
                         : <img src={default_photo} className="img_profile_photo"/>
                     }
                 </div>
