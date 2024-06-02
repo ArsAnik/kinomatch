@@ -4,13 +4,13 @@ const router = new Router();
 
 
 router.get('/getFilmInf/:id', FilmController.getFilmInf);
-router.get('/getFilms', FilmController.getFilms);
+router.get('/getFilmsForUser', FilmController.getFilmsForUser);
 router.get('/getFilmByGenre/:genres', FilmController.getFilmByGenre);
 router.get('/getFilmByYear/:year', FilmController.getFilmByYear);
 
 router.get('/getGenres', FilmController.getGenres);
 
-router.post('/addWantToWatch', FilmController.addWantToWatch);
+router.post('/addWantToWatch', FilmController.addFilm);
 router.get('/getUserFilms', FilmController.getUserFilms);
 
 module.exports = router;

@@ -33,11 +33,18 @@ class FilmController {
         }
     }
 
-    async getFilms(req, res){
+    async getFilmsForUser(req, res){
         try {
-            const films = await Film.find({}).limit(1);
+            //const userId = req.body.id;
+            const userId = '665c72fef7b768b3aedd6267';
 
-            res.send(films[0]);
+            const user = await User.findOne({ _id: userId });
+            console.log(user);
+            const tuchedFilms = await FilmWithScore.find({ _id: user.films }).distinct('film');
+
+            const films = await Film.find({ _id: { $nin: tuchedFilms } }).limit(10);
+
+            res.send(films);
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});
@@ -70,14 +77,13 @@ class FilmController {
         }
     }
 
-    async addWantToWatch(req, res){
+    async addFilm(req, res){
         try {
-            const {userId, filmId} = req.body;
+            const {userId, filmId, filmState} = req.body;
 
             const scoredFilm = new FilmWithScore({
                 film: filmId,
-                isWatch: false,
-                isWanted: true
+                isWanted: filmState
             });
 
             await scoredFilm.save();

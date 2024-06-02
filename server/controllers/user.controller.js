@@ -1,10 +1,11 @@
-const User = require("../models/Film");
+const User = require("../models/User");
 const FilmWithScore = require("../models/FilmWithScore");
 const Film = require("../models/Film");
 const Uuid = require('uuid');
 const fs = require('fs');
 const config = require("config");
 const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose");
 
 class UserController {
 
@@ -12,7 +13,7 @@ class UserController {
         try {
             const {id} = req.params;
 
-            const user = await User.find();
+            const user = await User.findOne({ _id: id });
 
             res.send(user);
         } catch (e) {
@@ -36,17 +37,20 @@ class UserController {
 
     async updateUser(req, res){
         try {
-            const {id} = req.user;
-            const {name} = req.body;
+            const {id, name} = req.body;
 
             if(!name || name === ''){
                 res.send({message: "Uncorrected request"});
             }
 
-            const user = await User.findOneAndUpdate(
-                {_id: id},
-                name
+            console.log(id, name);
+
+            const user = await User.findByIdAndUpdate(
+                id,
+                {name: name}
             );
+
+            console.log(user);
 
             res.send(user);
 
