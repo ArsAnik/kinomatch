@@ -4,6 +4,7 @@ import './UserAuthorization.css'
 import Input from "../../components/input/input.jsx";
 import Button_back from "../../components/button_back/button_back.jsx";
 import {authorization} from "../../action/user.js";
+import {Link} from "react-router-dom";
 
 
 export const UserAuthorization =() =>{
@@ -23,7 +24,9 @@ export const UserAuthorization =() =>{
                     <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                 </div>
                 <a className="authorization_btn" onClick={() => dispatch(authorization(login, password))}>Войти</a>
-                <a href={"/registration"} className="reg_in_auth_btn" >Зарегистрироваться</a>
+                <Link to="/registration">
+                    <a className="reg_in_auth_btn" >Зарегистрироваться</a>
+                </Link>
             </div>
         </div>
     );

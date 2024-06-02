@@ -19,6 +19,7 @@ export const authorization = (login, password) => {
                 {login, password})
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
+            console.log(response.data.token)
         } catch (e) {
             console.log(e.response.data.message)
         }
