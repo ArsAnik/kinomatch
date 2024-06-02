@@ -24,9 +24,24 @@ class FilmController {
         try {
             const genres = req.params.genres.split('&');
 
-            const films = await Film.find({"genres.name": { $all: genres }}).limit(10);
+            const films = await Film.find({genres: genres});
 
             res.send(films);
+
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Server error"});
+        }
+    }
+
+    async getFilmInf(req, res){
+        try {
+            const {id} = req.params;
+
+            const film = await Film.findById(id);
+
+            res.send(film);
+
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});

@@ -12,6 +12,7 @@
     position: relative;
     top: 28px;
     margin-left: 20px;
+    z-index: 1000;
 }
 
 .setting_photo_block{

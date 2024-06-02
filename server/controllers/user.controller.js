@@ -4,8 +4,6 @@ const Film = require("../models/Film");
 const Uuid = require('uuid');
 const fs = require('fs');
 const config = require("config");
-const bcrypt = require("bcryptjs");
-const mongoose = require("mongoose");
 
 class UserController {
 
@@ -43,14 +41,10 @@ class UserController {
                 res.send({message: "Uncorrected request"});
             }
 
-            console.log(id, name);
-
             const user = await User.findByIdAndUpdate(
                 id,
                 {name: name}
             );
-
-            console.log(user);
 
             res.send(user);
 

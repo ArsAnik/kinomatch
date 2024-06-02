@@ -3,7 +3,7 @@ import './Filters.css'
 import Button_back from "../../components/button_back/button_back.jsx";
 import Checkbox_filters from "../../components/checkbox_filters/checkbox_filters.jsx";
 
-export const Filters =() =>{
+export const Filters =(props) =>{
 
     return(
         <div className="filters_body">

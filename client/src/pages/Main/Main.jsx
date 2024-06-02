@@ -6,27 +6,10 @@ import Block_inf_film from "../../components/block_inf_film/block_inf_film.jsx";
 
 import icon_film from "../../img/icon_film.svg";
 import poster_film from "../../img/poster_film.jpg";
+import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 export const Main =() =>{
-
-    // To move the card as the user drags the cursor
-    //const motionValue = useMotionValue(0);
-
-    // To rotate the card as the card moves on drag
-    // const rotateValue = useTransform(motionValue, [-200, 200], [-50, 50]);
-    //
-    // // To decrease opacity of the card when swiped
-    // // on dragging card to left(-200) or right(200)
-    // // opacity gradually changes to 0
-    // // and when the card is in center opacity = 1
-    // const opacityValue = useTransform(
-    //     motionValue,
-    //     [-200, -150, 0, 150, 200],
-    //     [0, 1, 1, 1, 0]
-    // );
-    //
-    // // Framer animation hook
-    // const animControls = useAnimation();
 
     return(
         <div className="main">
@@ -60,9 +43,11 @@ export const Main =() =>{
                     </svg>
                 </button>
 
-                <a href={"/film"} className="main_inf_film">
-                    <Block_inf_film header="Оппенгеймер" img={poster_film} genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
-                </a>
+                <Link to="/film">
+                    <a className="main_inf_film">
+                        <Block_inf_film header="Оппенгеймер" img={poster_film} genres="биография, драма, США, 3 ч" text="История жизни американского физика-теоретика Роберта Оппенгеймера, который во времена Второй мировой войны руководил Манхэттенским проектом — секретными разработками ядерного оружия." />
+                    </a>
+                </Link>
 
                 <button className="btn_yes">
                     <svg width="40.000000" height="40.000000" viewBox="0 2 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" >
@@ -74,9 +59,11 @@ export const Main =() =>{
 
 
 
-            <a href={"/liked"} className="main_btn_list_film">
-                <img src={icon_film} className="img_list_film" alt="Подобранные фильмы"/>
-            </a>
+            <Link to="/liked">
+                <a className="main_btn_list_film">
+                    <img src={icon_film} className="img_list_film" alt="Подобранные фильмы"/>
+                </a>
+            </Link>
 
         </div>
     );
