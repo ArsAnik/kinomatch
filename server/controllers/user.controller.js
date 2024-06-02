@@ -4,7 +4,6 @@ const Film = require("../models/Film");
 const Uuid = require('uuid');
 const fs = require('fs');
 const config = require("config");
-const bcrypt = require("bcryptjs");
 
 class UserController {
 
@@ -37,15 +36,11 @@ class UserController {
     async updateUser(req, res){
         try {
             const {id} = req.user;
-            const {name} = req.body;
-
-            if(!name || name === ''){
-                res.send({message: "Uncorrected request"});
-            }
+            const {updates} = req.body;
 
             const user = await User.findOneAndUpdate(
                 {_id: id},
-                name
+                {updates}
             );
 
             res.send(user);
