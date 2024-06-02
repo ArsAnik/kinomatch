@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require('express-validator');
 const jwt = require("jsonwebtoken");
-const config = require("nodemon/lib/config");
+const config = require("config");
 
 class AuthController {
 
@@ -61,14 +61,14 @@ class AuthController {
                 return res.status(400).json({error: `Wrong password` });
             }
 
-            return res.json({message: "User logged in"});
-
-            const token = jwt.sign({_id:user.id}, config.get("secretKey"),{expiresIn: "1h"});
+            const token = jwt.sign({_id:user.id}, config.get("server.secretKey"),{expiresIn: "1h"});
             return res.json({
+                message: "User logged in",
                 token,
                 user:{
                     id: user.id,
                     name: user.name,
+                    avatar: user.avatar
                 }
             })
 
@@ -87,6 +87,7 @@ class AuthController {
                 user:{
                     id: user.id,
                     name: user.name,
+                    avatar: user.avatar
                 }
             })
         } catch (e) {

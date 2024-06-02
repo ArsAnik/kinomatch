@@ -20,6 +20,6 @@ router.post('/login', [
     ],
     AuthController.login);
 
-router.get('/auth', authMiddleware , AuthController.auth);
+router.get('/auth', authMiddleware, AuthController.auth);
 
 module.exports = router;
