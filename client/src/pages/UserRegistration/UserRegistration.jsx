@@ -23,7 +23,7 @@ export const UserRegistration =() =>{
                     <Input value = {email} setValue = {setEmail} type="text" placeholder="Почта"/>
                     <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                 </div>
-                <a className="registration_btn" onClick={() => registration(email, name, login, password)} href={"/authorization"}>Зарегистрироваться</a>
+                <a className="registration_btn" onClick={() => registration(email, name, login, password)}>Зарегистрироваться</a>
             </div>
         </div>
     );

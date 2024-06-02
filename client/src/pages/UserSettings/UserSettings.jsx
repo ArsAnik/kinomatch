@@ -25,7 +25,7 @@ export const UserSettings =() =>{
                         <button className="btn_photo">Изменить фото</button>
                     </div>
                 </div>
-                <div> className="setting_inf_block">
+                <div className="setting_inf_block">
                     <Input value={login} setValue = {setLogin} type="text" placeholder="Логин"/>
                     <Input value = {name} setValue = {setName} type="text" placeholder="ФИО"/>
                     <Input value = {email} setValue = {setEmail} type="text" placeholder="Почта"/>

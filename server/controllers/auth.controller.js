@@ -37,7 +37,7 @@ class AuthController {
 
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});;
+            res.send({message: "Server error"});
         }
     }
 
@@ -68,10 +68,7 @@ class AuthController {
                 token,
                 user:{
                     id: user.id,
-                    email: user.email,
-                    diskSpace:user.diskSpace,
-                    usedSpace:user.usedSpace,
-                    avatar: user.avatar
+                    name: user.name,
                 }
             })
 
@@ -89,15 +86,12 @@ class AuthController {
                 token,
                 user:{
                     id: user.id,
-                    email: user.email,
-                    diskSpace:user.diskSpace,
-                    usedSpace:user.usedSpace,
-                    avatar: user.avatar
+                    name: user.name,
                 }
             })
         } catch (e) {
             console.log(e);
-            //res.send({message: "Server error"});
+            res.send({message: "Server error"});
         }
     }
 }
