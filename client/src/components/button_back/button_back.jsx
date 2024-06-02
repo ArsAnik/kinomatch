@@ -1,6 +1,6 @@
 import React from 'react';
 import './button_back.css'
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Button_back = () => {
     const navigate = useNavigate();

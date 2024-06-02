@@ -7,12 +7,7 @@ import {auth} from "./action/user";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
-    const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(auth())
-    }, [] )
-    console.log(isAuth)
     const routes = useRoutes(isAuth)
     return (
         <Router>

@@ -3,6 +3,7 @@ import userReducer from "./userReducer";
 import {thunk} from "redux-thunk";
 import storage from 'redux-persist/lib/storage'
 import {persistReducer} from "redux-persist";
+import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 
 const reducers = combineReducers({
     user: userReducer
@@ -10,7 +11,8 @@ const reducers = combineReducers({
 
 const persistConfig = {
     key: 'root',
-    storage
+    storage: storage,
+    stateReconciler: autoMergeLevel2
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
