@@ -6,8 +6,11 @@ import Block_inf_film from "../../components/block_inf_film/block_inf_film.jsx";
 import icon_film from "../../img/icon_film.svg";
 import {Link} from "react-router-dom";
 import axios from "axios";
+import {addFilm} from "../../action/film.js";
+import {updateAvatar} from "../../action/user.js";
 
 export const Main = () => {
+    const id_user = JSON.parse(localStorage.getItem('user')).id;
 
     const [data, setData] = useState(["Загрузка..."]);
     useEffect(() => {
@@ -20,6 +23,7 @@ export const Main = () => {
                 console.log(error);
             })
     }, []);
+    console.log(id_user,data.id)
 
     return (
         <div className="main">
@@ -56,7 +60,7 @@ export const Main = () => {
                 </div>
             </div>
             <div className="main_block">
-                <button className="btn_no">
+                <a className="btn_no" onClick={() => addFilm(id_user, data.id,false)}>
                     <svg width="40.000000" height="40.000000" viewBox="6 1 40 40" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path id="path"
@@ -66,15 +70,15 @@ export const Main = () => {
                               strokeOpacity="1.000000" strokeWidth="3.000000" strokeLinejoin="round"
                               strokeLinecap="round"/>
                     </svg>
-                </button>
+                </a>
 
                 <Link to={"/film/" + data.id}>
                     <a className="main_inf_film">
                         <Block_inf_film header={data.name} img={data.poster} genres={data.genres}/>
                     </a>
                 </Link>
-
-                <button className="btn_yes">
+s
+                <a className="btn_yes" onClick={() => addFilm(id_user, data.id,true)}>
                     <svg width="40.000000" height="40.000000" viewBox="0 2 40 40" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path id="path"
@@ -84,7 +88,7 @@ export const Main = () => {
                               strokeOpacity="1.000000" strokeWidth="3.000000" strokeLinejoin="round"
                               strokeLinecap="round"/>
                     </svg>
-                </button>
+                </a>
             </div>
 
 

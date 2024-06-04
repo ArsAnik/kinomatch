@@ -26,7 +26,7 @@ export const useRoutes = isAuthenticated => {
                 <Route path="/liked" element={<ListLikedFilm />}/>
                 <Route path="/watched" element={<ListWatchedFilm />}/>
                 <Route path="/film/:id" element={<InfoFilm />}/>
-                <Route path="/acting" element={<Acting />}/>
+                <Route path="/acting/:id" element={<Acting />}/>
                 <Route path="/profile" element={<UserProfile />}/>
                 <Route path="/filters" element={<Filters />}/>
                 <Route path="/errors" element={<Error name="404" />}/>

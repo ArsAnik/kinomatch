@@ -5,6 +5,8 @@ import './App.css';
 
 function App() {
     const isAuth = localStorage.getItem('token');
+    const data = localStorage.getItem('data');
+    console.log(data.user)
 
     const routes = useRoutes(isAuth !== null && isAuth !== '')
     return (

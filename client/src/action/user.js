@@ -6,7 +6,6 @@ export const registration = async(email, name, login, password) => {
         const response = await axios.post('http://localhost:5000/auth/registration',
             {email, name, login, password})
         const isAuth = localStorage.getItem('token');
-
         console.log(isAuth !== null && isAuth !== '')
         window.location.href = '/authorization';
     } catch (e) {
@@ -20,13 +19,9 @@ export const authorization = async(login, password) => {
             await axios.post('http://localhost:5000/auth/login', {login, password})
                 .then(function (response){
 
-                localStorage.setItem('token', response.data.token,)
-                localStorage.setItem('user' ,response.data.user)
-
-
-
-                    window.location.href = '/';
-                console.log(response.data.user)
+                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('user' , JSON.stringify(response.data.user))
+                window.location.href = '/';
         })
     } catch (e) {
             console.log(e)
@@ -65,7 +60,7 @@ export const updateUser = (name) => {
     try{
         axios.patch('http://localhost:5000/user/updateUser', {name}, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response){
-                localStorage.setItem('user' , response.data.user)
+                localStorage.setItem('user' , JSON.stringify(response.data.user))
             })
         } catch (e) {
             console.log(e)
@@ -79,7 +74,7 @@ export const updateAvatar = (id,file) => {
         formData.append('file', file)
         axios.post('http://localhost:5000/user/changeUserAvatar', formData, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response){
-                localStorage.setItem('user' , response.data.user)
+                localStorage.setItem('user' , JSON.stringify(response.data.user))
             })
         } catch (e) {
             console.log(e)

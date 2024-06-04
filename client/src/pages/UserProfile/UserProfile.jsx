@@ -6,9 +6,8 @@ import {Link} from "react-router-dom";
 import {static_path} from "../../../config.js";
 
 export const UserProfile =() =>{
-    const NameUser = localStorage.getItem('user.name');
-    const AvatarUser = localStorage.getItem('user.avatar');
-    console.log(NameUser)
+    const NameUser =JSON.parse(localStorage.getItem('user')).name;
+    const AvatarUser =JSON.parse(localStorage.getItem('user')).avatar;
 
     return(
         <div className="profile">

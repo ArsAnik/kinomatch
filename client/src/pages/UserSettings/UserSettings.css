@@ -25,11 +25,20 @@
 
 }
 
+.setting_photo{
+    display: inline-block;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+
 .img_setting_photo{
-    width: 70%;
     border-radius: 50%;
     box-shadow: 0px 0px 47px var(--color_azure);
-    margin-left: 20px;
+    box-shadow: 0px 0px 47px var(--color_azure);
+    width:100%;
+    height:100%;
+    object-fit: cover;
 }
 
 .section_btn_photo{

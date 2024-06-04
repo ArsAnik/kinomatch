@@ -9,13 +9,10 @@ import {static_path} from "../../../config.js";
 
 
 export const UserSettings =() =>{
-    const AvatarUser = localStorage.getItem('user.avatar');
-    const NameUser = localStorage.getItem('user.name');
-    const id = localStorage.getItem('user.id');
+    const NameUser = JSON.parse(localStorage.getItem('user')).name;
+    const AvatarUser = JSON.parse(localStorage.getItem('user')).avatar;
+    const id = JSON.parse(localStorage.getItem('user')).id;
     const [name,setName] = useState(NameUser)
-
-    console.log(NameUser);
-
 
     function changeHandler(e) {
         const file = e.target.files[0]
