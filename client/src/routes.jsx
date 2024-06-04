@@ -14,10 +14,13 @@ import Error from "./components/error/error.jsx";
 
 
 export const useRoutes = isAuthenticated => {
+
+    console.log(isAuthenticated);
+
     if(isAuthenticated){
         return(
             <Routes>
-                <Route path="/authorization" element={<Navigate to="/profile" replace/>} />
+                <Route path="/authorization" element={<Navigate to="/" replace/>} />
                 <Route path="/" element={<Main />}/>
                 <Route path="/settings" element={<UserSettings />}/>
                 <Route path="/liked" element={<ListLikedFilm />}/>

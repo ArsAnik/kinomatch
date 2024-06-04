@@ -2,25 +2,24 @@ import React, {useState} from 'react'
 import './UserSettings.css'
 import Button_back from "../../components/button_back/button_back.jsx";
 import Input from "../../components/input/input.jsx";
-import {useDispatch, useSelector} from "react-redux";
 import default_photo from "../../img/default_photo.jpg";
-import {logout} from "../../reducers/userReducer.js";
 import {Link} from "react-router-dom";
-import {authorization, updateAvatar, updateUser} from "../../action/user.js";
+import {logout, updateAvatar, updateUser} from "../../action/user.js";
 import {static_path} from "../../../config.js";
 
 
 export const UserSettings =() =>{
-    const AvatarUser = useSelector(state => state.user.currentUser.avatar)
-    const NameUser = useSelector(state => state.user.currentUser.name)
-    const id = useSelector(state => state.user.currentUser.id)
+    const AvatarUser = localStorage.getItem('user.avatar');
+    const NameUser = localStorage.getItem('user.name');
+    const id = localStorage.getItem('user.id');
     const [name,setName] = useState(NameUser)
-    const dispatch= useDispatch();
+
+    console.log(NameUser);
 
 
     function changeHandler(e) {
         const file = e.target.files[0]
-        dispatch(updateAvatar(id, file))
+        updateAvatar(id, file)
     }
 
     return(
@@ -45,11 +44,11 @@ export const UserSettings =() =>{
                 <div className="setting_inf_block">
                     <Input value = {name} setValue = {setName} type="text" placeholder="ФИО"/>
                     <Link to="/settings">
-                        <a className="setting_btn_save" onClick={() => dispatch(updateUser(name)) }>Сохранить</a>
+                        <a className="setting_btn_save" onClick={() => updateUser(name)}>Сохранить</a>
                     </Link>
 
                     <Link to="/authorization">
-                        <a className="setting_btn_exit" onClick={() => dispatch(logout())}>Выйти из профиля</a>
+                        <a className="setting_btn_exit" onClick={() => logout()}>Выйти из профиля</a>
                     </Link>
 
                 </div>

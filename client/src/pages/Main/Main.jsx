@@ -3,10 +3,7 @@ import './Main.css'
 import Button_filters from "../../components/button_filters/button_filters.jsx";
 import Button_profile from "../../components/button_profile/button_profile.jsx";
 import Block_inf_film from "../../components/block_inf_film/block_inf_film.jsx";
-
 import icon_film from "../../img/icon_film.svg";
-import poster_film from "../../img/poster_film.jpg";
-import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import axios from "axios";
 

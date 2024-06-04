@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useDispatch} from "react-redux"
 import './UserAuthorization.css'
 import Input from "../../components/input/input.jsx";
 import Button_back from "../../components/button_back/button_back.jsx";
@@ -10,7 +9,6 @@ import {Link} from "react-router-dom";
 export const UserAuthorization =() =>{
     const [login,setLogin] = useState("")
     const [password,setPassword] = useState("")
-    const dispatch= useDispatch();
 
     return(
         <div className="authorization_body">
@@ -23,7 +21,7 @@ export const UserAuthorization =() =>{
                     <Input value = {login} setValue = {setLogin} type="text" placeholder="Логин" />
                     <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                 </div>
-                <a className="authorization_btn" onClick={() => dispatch(authorization(login, password))}>Войти</a>
+                <a className="authorization_btn" onClick={() => authorization(login, password)}>Войти</a>
                 <Link to="/registration">
                     <a className="reg_in_auth_btn" >Зарегистрироваться</a>
                 </Link>
@@ -33,5 +31,3 @@ export const UserAuthorization =() =>{
 };
 
 export default UserAuthorization;
-
-//href={"/profile"}

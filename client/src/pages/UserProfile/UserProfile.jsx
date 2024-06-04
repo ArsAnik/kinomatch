@@ -1,16 +1,14 @@
 import React from 'react'
 import Button_back from "../../components/button_back/button_back.jsx";
 import './UserProfile.css'
-
 import default_photo from '../../img/default_photo.jpg';
-import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {static_path} from "../../../config.js";
 
 export const UserProfile =() =>{
-
-    const NameUser = useSelector(state => state.user.currentUser.name)
-    const AvatarUser = useSelector(state => state.user.currentUser.avatar)
+    const NameUser = localStorage.getItem('user.name');
+    const AvatarUser = localStorage.getItem('user.avatar');
+    console.log(NameUser)
 
     return(
         <div className="profile">

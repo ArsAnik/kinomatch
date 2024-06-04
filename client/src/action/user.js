@@ -1,12 +1,13 @@
 import axios from "axios";
-import {setUser} from "../reducers/userReducer.js";
-import {useSelector} from "react-redux";
-
+import {useRoutes} from "../routes.jsx";
 
 export const registration = async(email, name, login, password) => {
     try{
         const response = await axios.post('http://localhost:5000/auth/registration',
             {email, name, login, password})
+        const isAuth = localStorage.getItem('token');
+
+        console.log(isAuth !== null && isAuth !== '')
         window.location.href = '/authorization';
     } catch (e) {
         console.log(e.response.data.message)
@@ -14,61 +15,73 @@ export const registration = async(email, name, login, password) => {
 }
 
 
-export const authorization = (login, password) => {
-    return async dispatch => {
-        try{
-            const response = await axios.post('http://localhost:5000/auth/login',
-                {login, password})
-            dispatch(setUser(response.data.user))
-            localStorage.setItem('token', response.data.token)
-            console.log(response.data.token)
-        } catch (e) {
-            console.log(e.response.data.message)
-        }
+export const authorization = async(login, password) => {
+    try{
+            await axios.post('http://localhost:5000/auth/login', {login, password})
+                .then(function (response){
+
+                localStorage.setItem('token', response.data.token,)
+                localStorage.setItem('user' ,response.data.user)
+
+
+
+                    window.location.href = '/';
+                console.log(response.data.user)
+        })
+    } catch (e) {
+            console.log(e)
     }
 
 }
 
+
+
+export const logout = () => {
+    try{
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+        window.location.href = '/authorization';
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+
 export const auth = () => {
-    return async dispatch => {
-        try{
-            const response = await axios.get('http://localhost:5000/auth/auth',  {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
-            dispatch(setUser(response.data.user))
+    try{
+            axios.get('http://localhost:5000/auth/auth',  {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+                .then(function (response){
+            localStorage.setItem('user' , response.data.user)
             localStorage.setItem('token', response.data.token)
+        })
         } catch (e) {
             localStorage.removeItem('token')
         }
-    }
-
 }
+
 
 
 export const updateUser = (name) => {
-    return async dispatch => {
-        try{
-            const response = await axios.patch('http://localhost:5000/user/updateUser',
-                {name},
-                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
-            dispatch(setUser(response.data.user))
+    try{
+        axios.patch('http://localhost:5000/user/updateUser', {name}, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+            .then(function (response){
+                localStorage.setItem('user' , response.data.user)
+            })
         } catch (e) {
             console.log(e)
         }
-    }
-
 }
 
+
 export const updateAvatar = (id,file) => {
-    return async dispatch => {
-        try{
-            let formData = new FormData()
-            formData.append('file', file)
-            const response = await axios.post('http://localhost:5000/user/changeUserAvatar',
-                formData,
-                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}});
-            dispatch(setUser(response.data.user))
+    try{
+        let formData = new FormData()
+        formData.append('file', file)
+        axios.post('http://localhost:5000/user/changeUserAvatar', formData, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+            .then(function (response){
+                localStorage.setItem('user' , response.data.user)
+            })
         } catch (e) {
             console.log(e)
-        }
     }
-
 }
