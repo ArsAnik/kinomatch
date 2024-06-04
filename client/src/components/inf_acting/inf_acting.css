@@ -5,15 +5,13 @@
     justify-content: flex-start;
     margin: 10px 0;
     width: 230px;
-    height: 57px;
+    height: 33.33%;
     align-items: center;
 }
 
 .acting_photo{
     box-shadow: 0px 0px 15px var(--color_azure);
     width: 53px;
-    height: 57px;
-
 }
 
 .acting_text{
@@ -22,6 +20,5 @@
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;
-    text-align: center;
-    margin-left:30px
+    margin-left: 15px
 }

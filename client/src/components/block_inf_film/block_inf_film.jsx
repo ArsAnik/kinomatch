@@ -8,10 +8,12 @@ const Block_inf_film = (props) => {
             <img src={props.img} className="inf_film_poster"/>
             <div className="inf_text_genre">{props.genres}
             </div>
-            <div className="inf_contain_text_info_film">
-                <p className="inf_text_info_film">{props.text}
-                </p>
-            </div>
+            {props.text &&
+                <div className="inf_contain_text_info_film">
+                    <p className="inf_text_info_film">{props.text}
+                    </p>
+                </div>
+            }
 
         </div>
 

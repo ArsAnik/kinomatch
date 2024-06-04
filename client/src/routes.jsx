@@ -22,7 +22,7 @@ export const useRoutes = isAuthenticated => {
                 <Route path="/settings" element={<UserSettings />}/>
                 <Route path="/liked" element={<ListLikedFilm />}/>
                 <Route path="/watched" element={<ListWatchedFilm />}/>
-                <Route path="/film" element={<InfoFilm />}/>
+                <Route path="/film/:id" element={<InfoFilm />}/>
                 <Route path="/acting" element={<Acting />}/>
                 <Route path="/profile" element={<UserProfile />}/>
                 <Route path="/filters" element={<Filters />}/>

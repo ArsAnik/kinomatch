@@ -10,10 +10,35 @@ class FilmController {
         try {
             const {id} = req.params;
 
-            const film = await Film.findById(id);
+            const film = await Film.findById(id, "-persons");
 
-            res.send(film);
+            let genres = [];
+            for (let i = 0; i < film.genres.length; ++i) {
+                genres.push(film.genres[i].name);
+            }
 
+
+            res.send({
+                id: film._id,
+                name: film.name,
+                description: film.description,
+                poster: film.poster[0].previewUrl,
+                genres: genres.join(", ")
+            });
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Server error"});
+        }
+    }
+
+    async getFilmActing(req, res) {
+        try {
+            const {id} = req.params;
+
+            let acting = await Film.findById(id, "persons");
+            acting = acting.persons.slice(0, 9);
+
+            res.send({acting});
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});
@@ -34,32 +59,28 @@ class FilmController {
         }
     }
 
-    async getFilmInf(req, res){
+    async getFilmForUser(req, res){
         try {
-            const {id} = req.params;
-
-            const film = await Film.findById(id);
-
-            res.send(film);
-
-        } catch (e) {
-            console.log(e);
-            res.send({message: "Server error"});
-        }
-    }
-
-    async getFilmsForUser(req, res){
-        try {
-            //const userId = req.body.id;
-            const userId = '665c72fef7b768b3aedd6267';
+            const userId = req.user._id;
 
             const user = await User.findOne({ _id: userId });
-            console.log(user);
             const tuchedFilms = await FilmWithScore.find({ _id: user.films }).distinct('film');
 
-            const films = await Film.find({ _id: { $nin: tuchedFilms } }).limit(10);
+            const films = await Film.find({ _id: { $nin: tuchedFilms } }).limit(1);
 
-            res.send(films);
+            let genres = [];
+
+            for (let i = 0; i < films[0].genres.length; ++i) {
+                genres.push(films[0].genres[i].name);
+            }
+
+            res.send({
+                id: films[0].id,
+                name: films[0].name,
+                description: films[0].description,
+                poster: films[0].poster[0].previewUrl,
+                genres: genres.join(", ")
+            });
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});

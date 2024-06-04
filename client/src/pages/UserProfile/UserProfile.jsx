@@ -9,7 +9,7 @@ import {static_path} from "../../../config.js";
 
 export const UserProfile =() =>{
 
-    const LogUser = useSelector(state => state.user.currentUser.login)
+    const NameUser = useSelector(state => state.user.currentUser.name)
     const AvatarUser = useSelector(state => state.user.currentUser.avatar)
 
     return(
@@ -17,14 +17,14 @@ export const UserProfile =() =>{
 
             <div className="profile_btn_block">
                 <div className="profile_btn_back">
-                    <Button_back href="/" />
+                    <Button_back />
                 </div>
                 <div className="profile_settings">
                     <Link to="/settings" >
                         <a className="profile_btn_settings">
                             <svg className="img_settings" width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
                                 <circle id="Эллипс 1" cx="12.500000" cy="11.500000" r="4.500000" fill="#66FCF1" fillOpacity="1.000000"/>
-                                <path id="path" d="M2.6 17.89C2.22 17.7 2 17.32 2 16.92L2 7.07C2 6.67 2.22 6.29 2.6 6.1L11.93 1.14C12.28 0.95 12.71 0.95 13.06 1.14L22.39 6.1C22.77 6.29 23 6.67 23 7.07L23 16.92C23 17.32 22.77 17.7 22.39 17.89L13.06 22.85C12.71 23.04 12.28 23.04 11.93 22.85L2.6 17.89Z" stroke-opacity="1.000000" stroke-width="1.500000"/>
+                                <path id="path" d="M2.6 17.89C2.22 17.7 2 17.32 2 16.92L2 7.07C2 6.67 2.22 6.29 2.6 6.1L11.93 1.14C12.28 0.95 12.71 0.95 13.06 1.14L22.39 6.1C22.77 6.29 23 6.67 23 7.07L23 16.92C23 17.32 22.77 17.7 22.39 17.89L13.06 22.85C12.71 23.04 12.28 23.04 11.93 22.85L2.6 17.89Z" strokeOpacity="1.000000" strokeWidth="1.500000"/>
                             </svg>
                         </a>
                     </Link>
@@ -39,7 +39,7 @@ export const UserProfile =() =>{
                         : <img src={default_photo} className="img_profile_photo"/>
                     }
                 </div>
-                <div className="profile_login">{LogUser}</div>
+                <div className="profile_login">{NameUser}</div>
                 <div className="profile_liked_film">
                     <Link to="/liked">
                         <a className="profile_btn_film">
@@ -55,8 +55,8 @@ export const UserProfile =() =>{
                     <Link to="/watched">
                         <a href={"/watched"} className="profile_btn_film">
                             <svg className="profile_img_btn_film" width="44.000000" height="41.000000" viewBox="0 0 44 41" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                <line x1="6.000000" y1="23.500000" x2="17.900757" y2="34.618286" stroke="#66FCF1" stroke-opacity="1.000000" stroke-width="4.000000"/>
-                                <line x1="15.500122" y1="33.999878" x2="40.000000" y2="10.000000" stroke="#66FCF1" stroke-opacity="1.000000" stroke-width="4.000000"/>
+                                <line x1="6.000000" y1="23.500000" x2="17.900757" y2="34.618286" stroke="#66FCF1" strokeOpacity="1.000000" strokeWidth="4.000000"/>
+                                <line x1="15.500122" y1="33.999878" x2="40.000000" y2="10.000000" stroke="#66FCF1" strokeOpacity="1.000000" strokeWidth="4.000000"/>
                             </svg>
                             <div className="text_btn_film">Просмотренные фильмы</div>
                         </a>

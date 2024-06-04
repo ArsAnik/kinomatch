@@ -82,7 +82,7 @@ class AuthController {
     async auth(req, res) {
         try{
             const user = await User.findOne({id:req.user.id})
-            const token = jwt.sign({_id:user.id}, config.get("server.secretKey"),{expiresIn: "1h"});
+            const token = jwt.sign({_id:user.id}, config.get("server.secretKey"),{expiresIn: "365d"});
             return res.json({
                 token,
                 user:{

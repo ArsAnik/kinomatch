@@ -45,7 +45,7 @@ export const UserSettings =() =>{
                 <div className="setting_inf_block">
                     <Input value = {name} setValue = {setName} type="text" placeholder="ФИО"/>
                     <Link to="/settings">
-                        <a className="setting_btn_save" onClick={() => dispatch(updateUser(id,name)) }>Сохранить</a>
+                        <a className="setting_btn_save" onClick={() => dispatch(updateUser(name)) }>Сохранить</a>
                     </Link>
 
                     <Link to="/authorization">

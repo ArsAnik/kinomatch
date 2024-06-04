@@ -1,5 +1,5 @@
 import axios from "axios";
-import {setUser, UpdateUser} from "../reducers/userReducer.js";
+import {setUser} from "../reducers/userReducer.js";
 import {useSelector} from "react-redux";
 
 
@@ -43,14 +43,13 @@ export const auth = () => {
 }
 
 
-export const updateUser = (id,name) => {
+export const updateUser = (name) => {
     return async dispatch => {
         try{
-            await axios.patch('http://localhost:5000/user/updateUser',
-                {id, name})
-            console.log(id,name)
-            dispatch(UpdateUser(id,name))
-            //localStorage.setItem('token', response.data.token)
+            const response = await axios.patch('http://localhost:5000/user/updateUser',
+                {name},
+                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+            dispatch(setUser(response.data.user))
         } catch (e) {
             console.log(e)
         }
@@ -63,9 +62,10 @@ export const updateAvatar = (id,file) => {
         try{
             let formData = new FormData()
             formData.append('file', file)
-            const response = await axios.post('http://localhost:5000/user/changeUserAvatar', formData, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}});
-            console.log(response.data);
-            dispatch(setUser(response.data))
+            const response = await axios.post('http://localhost:5000/user/changeUserAvatar',
+                formData,
+                {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}});
+            dispatch(setUser(response.data.user))
         } catch (e) {
             console.log(e)
         }

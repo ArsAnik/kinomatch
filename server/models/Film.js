@@ -4,8 +4,8 @@ const Film = new Schema({
     name: {type: String, required: true},
     description: {type: String},
     year: {type: Number},
-    poster: [{type: String}],
-    genres: [{type: String}],
+    poster: [{type: Object}],
+    genres: [{type: Object}],
     persons: [{type: Object}]
 });
 

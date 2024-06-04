@@ -13,10 +13,10 @@ class UserController {
 
             const user = await User.findOne({ _id: id });
 
-            res.send(user);
+            return res.send(user);
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            return res.send({message: "Server error"});
         }
     }
 
@@ -26,31 +26,40 @@ class UserController {
 
             const user = await User.findOne({login: {$regex: /login/}});
 
-            res.send(user);
+            return res.send(user);
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            return res.send({message: "Server error"});
         }
     }
 
     async updateUser(req, res){
         try {
-            const {id, name} = req.body;
+            const {_id} = req.user;
+            const {name} = req.body;
 
             if(!name || name === ''){
-                res.send({message: "Uncorrected request"});
+                return res.send({message: "Uncorrected request"});
             }
 
             const user = await User.findByIdAndUpdate(
-                id,
+                _id,
                 {name: name}
             );
 
-            res.send(user);
+            return res.send({
+                message: "Information updated successfully",
+                user:{
+                    id: user.id,
+                    name: user.name,
+                    login: user.login,
+                    avatar: user.avatar
+                }
+            });
 
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            return res.send({message: "Server error"});
         }
     }
 
@@ -65,7 +74,15 @@ class UserController {
             user.avatar = avatarName;
             await user.save();
 
-            res.send(user);
+            res.send({
+                message: "Information updated successfully",
+                user:{
+                    id: user.id,
+                    name: user.name,
+                    login: user.login,
+                    avatar: user.avatar
+                }
+            });
         } catch (e) {
             console.log(e);
             res.send({message: "Server error"});

@@ -4,7 +4,7 @@ import './inf_acting.css'
 const Inf_acting = (props) => {
     return (
         <div className="inf_acting">
-            <img src={props.img} className="acting_photo"/>
+            <img src={props.photo} className="acting_photo"/>
             <div className="acting_text">{props.name}<br/>
                 {props.role}</div>
         </div>
