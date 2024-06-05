@@ -1,7 +1,42 @@
 .main_admin{
-
+    color: #fff;
+    font-family: var(--font_Bahn);
 }
 
-.admin_button_choose{
+.admin_inf{
+    text-align: center;
+    font-size: 24px;
+    padding: 20px;
+}
 
+.admin_button_block{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.admin_button_choose, .admin_button_choose{
+    padding: 10px 10px;
+    border: 1px solid var(--color_text_white);
+    color: var(--color_text_white);
+}
+
+.admin_btn_exit{
+    padding: 8px 8px;
+    border: 1px solid var(--color_azure);
+    color: var(--color_azure);
+}
+
+.admin_btn_exit, .admin_button_choose, .admin_button_choose{
+    display: block;
+    width: 280px;
+    margin: 30px auto 0;
+    border-radius: 14px;
+    background: none;
+    font-family: var(--font_Bahn);
+    font-size: 23px;
+    line-height: 20px;
+    text-align: center;
 }

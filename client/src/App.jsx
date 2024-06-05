@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {useRoutes} from "./routes.jsx";
-import {useAdminRoutes} from "./admin.routes.jsx";
 import { BrowserRouter as Router} from "react-router-dom";
 import './App.css';
 
@@ -8,13 +7,11 @@ function App() {
     const isAuth = localStorage.getItem('token');
     const isAdminAuth = localStorage.getItem('admin_token');
 
-    const routes = useRoutes(isAuth !== null && isAuth !== '')
-    const adminRoutes = useAdminRoutes(isAdminAuth== null && isAdminAuth !== '')
+    const routes = useRoutes((isAuth !== null && isAuth !== ''), (isAdminAuth !== null && isAdminAuth !== ''))
     return (
         <Router>
             <div className="container">
                 {routes}
-                {adminRoutes}
             </div>
         </Router>
 

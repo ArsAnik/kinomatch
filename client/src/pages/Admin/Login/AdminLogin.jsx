@@ -22,12 +22,12 @@ export const AdminLogin =() =>{
                     localStorage.clear();
                     localStorage.setItem('admin_token', response.data.token);
                     localStorage.setItem('admin' , JSON.stringify(response.data.admin));
-                    window.location.href = '/';
+                    window.location.href = '/admin/';
                 })
         } catch (e) {
-            console.log(e)
+            console.log(e.response.data.message);
+            return(e.response.data.message)
         }
-
     }
 
     async function clickHandler(login, password) {
@@ -54,15 +54,12 @@ export const AdminLogin =() =>{
                     : <></>}
             </div>
             <div className="authorization">
-                <div className="authorization_header">Вход в панель администратора</div>
+                <div className="authorization_header admin_authorization_header">Вход в панель администратора</div>
                 <div className="authorization_input">
                     <Input value = {login} setValue = {setLogin} type="text" placeholder="Логин" />
                     <Input value = {password} setValue = {setPassword} type="password" placeholder="Пароль"/>
                 </div>
                 <a className="authorization_btn" onClick={() => clickHandler(login, password)}>Войти</a>
-                <Link to="/registration">
-                    <a className="reg_in_auth_btn" >Зарегистрироваться</a>
-                </Link>
             </div>
         </div>
     );

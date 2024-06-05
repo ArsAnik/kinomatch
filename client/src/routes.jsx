@@ -12,8 +12,13 @@ import Acting from "./pages/Acting/Acting.jsx";
 import Filters from "./pages/Filters/Filters.jsx";
 import Error from "./components/error/error.jsx";
 
+import {AdminLogin} from "./pages/Admin/Login/AdminLogin.jsx";
+import {AdminMain} from "./pages/Admin/Main/AdminMain.jsx";
+import {AdminFilms} from "./pages/Admin/Films/AdminFilms.jsx";
+import {AdminUsers} from "./pages/Admin/Users/AdminUsers.jsx";
 
-export const useRoutes = isAuthenticated => {
+
+export const useRoutes = (isAuthenticated, isAdminAuthenticated) => {
 
     if(isAuthenticated){
         return(
@@ -31,11 +36,22 @@ export const useRoutes = isAuthenticated => {
             </Routes>
         )
     }
+    else if(isAdminAuthenticated){
+        return(
+            <Routes>
+                <Route path="/admin/" element={<AdminMain />}/>
+                <Route path="/admin/films" element={<AdminFilms />}/>
+                <Route path="/admin/users" element={<AdminUsers />}/>
+                <Route path="/errors" element={<Error name="404" />}/>
+            </Routes>
+        )
+    }
     return (
         <Routes>
             <Route path="*" element={<Navigate to="/authorization" replace/>} />
             <Route path="/authorization" element={<UserAuthorization />}/>
             <Route path="/registration" element={<UserRegistration />}/>
+            <Route path="/admin/login" element={<AdminLogin />}/>
             <Route path="/errors" element={<Error name="404" />}/>
         </Routes>
     )

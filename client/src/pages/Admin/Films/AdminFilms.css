@@ -1,7 +1,9 @@
 .main_admin{
-
+    color: #fff;
+    font-family: var(--font_Bahn);
 }
 
-.admin_button_choose{
-
+.admin_authorization_header{
+    text-align: center;
+    padding: 20px;
 }

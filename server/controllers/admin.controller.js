@@ -33,7 +33,7 @@ class AuthController {
 
             const isValidPassword = bcrypt.compareSync(password, admin.password);
             if (!isValidPassword) {
-                return res.status(400).json({error: `Неверный пароль` });
+                return res.status(400).json({message: `Неверный пароль` });
             }
 
             const token = jwt.sign({_id:admin.id}, config.get("server.secretKey"),{expiresIn: "365d"});

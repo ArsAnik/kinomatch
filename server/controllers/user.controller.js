@@ -11,7 +11,7 @@ class UserController {
         try {
             const {login} = req.params;
 
-            const user = await User.findOne({login: {$regex: /login/}});
+            const user = await User.find({login: { $regex: login}});
 
             return res.send(user);
         } catch (e) {
