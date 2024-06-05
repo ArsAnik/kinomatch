@@ -44,7 +44,9 @@ class FilmController {
                     genres: genres.join(", ")
                 });
             }
-            res.send({});
+            else{
+                res.send({});
+            }
         } catch (e) {
             console.log(e);
             res.send({message: "Ошибка сервера"});
@@ -74,7 +76,9 @@ class FilmController {
                     genres: genres.join(", ")
                 });
             }
-            res.send({});
+            else{
+                res.send({});
+            }
         } catch (e) {
             console.log(e);
             res.send({message: "Ошибка сервера"});
@@ -109,7 +113,9 @@ class FilmController {
                     genres: genres.join(", ")
                 });
             }
-            res.send({});
+            else{
+                res.send({});
+            }
         } catch (e) {
             console.log(e);
             res.send({message: "Ошибка сервера"});
@@ -134,10 +140,17 @@ class FilmController {
             const isWatch = req.body.isWatch;
 
             const user = await User.findOne({_id: userId});
-            const tuchedFilms_id = await FilmWithScore.find({$and: [{ _id: {$in: user.films}}, {isWatch: isWatch}, {isWant: true}]}).distinct("film");
+            const tuchedFilms_id = await FilmWithScore.find({$and: [{ _id: {$in: user.films}}, {isWatch: isWatch}, {isWanted: true}]}).distinct("film");
 
             const films = await Film.find({ _id: { $in: tuchedFilms_id } });
 
+            for(let i = 0; i < films.length; ++i){
+                films[i] = new Object({
+                    id: films[i]._id,
+                    name: films[i].name,
+                    photo: films[i].poster[0].previewUrl
+                });
+            }
             res.send(films);
         } catch (e) {
             console.log(e);
