@@ -5,11 +5,9 @@ export const registration = async(email, name, login, password) => {
     try{
         const response = await axios.post('http://localhost:5000/auth/registration',
             {email, name, login, password})
-        const isAuth = localStorage.getItem('token');
-        console.log(isAuth !== null && isAuth !== '')
         window.location.href = '/authorization';
     } catch (e) {
-        console.log(e.response.data.message)
+        return(e.response.data.message)
     }
 }
 
@@ -24,7 +22,7 @@ export const authorization = async(login, password) => {
                 window.location.href = '/';
         })
     } catch (e) {
-            console.log(e)
+        return(e.response.data.message)
     }
 
 }

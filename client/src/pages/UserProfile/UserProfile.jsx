@@ -8,6 +8,7 @@ import {static_path} from "../../../config.js";
 export const UserProfile =() =>{
     const NameUser =JSON.parse(localStorage.getItem('user')).name;
     const AvatarUser =JSON.parse(localStorage.getItem('user')).avatar;
+    const LoginUser =JSON.parse(localStorage.getItem('user')).login;
 
     return(
         <div className="profile">
@@ -36,7 +37,7 @@ export const UserProfile =() =>{
                         : <img src={default_photo} className="img_profile_photo"/>
                     }
                 </div>
-                <div className="profile_login">{NameUser}</div>
+                <div className="profile_login">{LoginUser}</div>
                 <div className="profile_liked_film">
                     <Link to="/liked">
                         <a className="profile_btn_film">

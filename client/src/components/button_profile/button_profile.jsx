@@ -1,6 +1,5 @@
 import React from 'react';
 import './button_profile.css'
-import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 const Button_profile = (props) => {

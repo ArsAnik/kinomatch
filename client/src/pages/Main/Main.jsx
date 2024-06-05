@@ -77,7 +77,6 @@ export const Main = () => {
                         <Block_inf_film header={data.name} img={data.poster} genres={data.genres}/>
                     </a>
                 </Link>
-s
                 <a className="btn_yes" onClick={() => addFilm(id_user, data.id,true)}>
                     <svg width="40.000000" height="40.000000" viewBox="0 2 40 40" fill="none"
                          xmlns="http://www.w3.org/2000/svg">

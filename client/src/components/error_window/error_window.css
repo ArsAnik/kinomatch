@@ -1,0 +1,27 @@
+.error_windows{
+    position: absolute;
+    padding: 10px 10px;
+    border-radius: 5px;
+    background: var(--color_error);
+    color: var(--color_text_white);
+    font-family: var(--font_Bahn);
+    font-size: 21px;
+    text-align: center;
+    z-index: 1000;
+    left: 50%;
+    transform: translate(-50%);
+    top:10px;
+    opacity: 0;
+}
+
+.error_windows.show{
+    animation-name: ani;
+    animation-timing-function: ease;
+    animation-duration: 2s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+}
+@keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
