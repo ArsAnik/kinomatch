@@ -7,19 +7,6 @@ const config = require("config");
 
 class UserController {
 
-    async getUser(req, res){
-        try {
-            const {id} = req.params;
-
-            const user = await User.findOne({ _id: id });
-
-            return res.send(user);
-        } catch (e) {
-            console.log(e);
-            return res.send({message: "Server error"});
-        }
-    }
-
     async findUser(req, res){
         try {
             const {login} = req.params;
@@ -29,7 +16,7 @@ class UserController {
             return res.send(user);
         } catch (e) {
             console.log(e);
-            return res.send({message: "Server error"});
+            return res.send({message: "Ошибка сервера"});
         }
     }
 
@@ -59,7 +46,7 @@ class UserController {
 
         } catch (e) {
             console.log(e);
-            return res.send({message: "Server error"});
+            return res.send({message: "Ошибка сервера"});
         }
     }
 
@@ -85,7 +72,7 @@ class UserController {
             });
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            res.send({message: "Ошибка сервера"});
         }
     }
 }
