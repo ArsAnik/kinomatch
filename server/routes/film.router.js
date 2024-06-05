@@ -7,7 +7,7 @@ router.get('/getFilmForUser', authMiddleware, FilmController.getFilmForUser);
 router.post('/getFilmForTwoUsers', authMiddleware, FilmController.getFilmForTwoUsers);
 router.post('/getUserFilms', authMiddleware, FilmController.getUserFilms);
 
-
+router.get('/getInfFilm/:id', authMiddleware, FilmController.getInfFilm);
 router.get('/getFilmActing/:id', authMiddleware, FilmController.getFilmActing);
 router.get('/getFilmByGenre/:genres', authMiddleware, FilmController.getFilmByGenre);
 

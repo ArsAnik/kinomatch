@@ -6,12 +6,50 @@ const {json} = require("express");
 
 class FilmController {
 
-    async getFilmActing(req, res) {
+    async getInfFilm(req, res) {
         try {
             const {id} = req.params;
 
-            let acting = await Film.findById(id, "persons");
-            acting = acting.persons.slice(0, 9);
+            let film = await Film.findById(id);
+
+            if(Object.keys(film).length !== 0) {
+                let genres = [];
+                for (let i = 0; i < film.genres.length; ++i) {
+                    genres.push(film.genres[i].name);
+                }
+
+                res.send({
+                    id: film._id,
+                    name: film.name,
+                    description: film.description,
+                    poster: film.poster[0].url,
+                    genres: genres.join(", ")
+                });
+            }
+            else{
+                res.send({});
+            }
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Ошибка сервера"});
+        }
+    }
+
+    async getFilmActing(req, res) {
+        try {
+            const {id} = req.params;
+            const {number} = req.params;
+
+            let acting;
+
+            if(number === 0){
+                acting = await Film.findById(id).distinct("persons");
+                acting = acting.persons;
+            }
+            else{
+                acting = await Film.findById(id).distinct("persons").limit(number);
+                acting = acting.persons.slice(0, number);
+            }
 
             res.send({acting});
         } catch (e) {
@@ -182,6 +220,25 @@ class FilmController {
             res.send({message: "Ошибка сервера"});
         }
     }
+
+    // async editFilmStatus(req, res){
+    //     try {
+    //         const userId = req.user._id;
+    //         const {filmId, isWanted, isWatch} = req.body;
+    //
+    //         const user = await User.findOne({_id: userId});
+    //         const filmWithScore_id = await FilmWithScore.find({$and: [{ _id: {$in: user.films}}, {film: {filmId}}]}).distinct("_id");
+    //
+    //         await FilmWithScore.findByIdAndUpdate(
+    //             filmWithScore_id
+    //             {$addToSet: {films: scoredFilm}});
+    //
+    //         res.send(scoredFilm);
+    //     } catch (e) {
+    //         console.log(e);
+    //         res.send({message: "Ошибка сервера"});
+    //     }
+    // }
 }
 
 module.exports = new FilmController();
