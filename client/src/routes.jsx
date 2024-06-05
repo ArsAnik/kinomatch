@@ -15,8 +15,6 @@ import Error from "./components/error/error.jsx";
 
 export const useRoutes = isAuthenticated => {
 
-    console.log(isAuthenticated);
-
     if(isAuthenticated){
         return(
             <Routes>
