@@ -6,28 +6,36 @@ const {json} = require("express");
 
 class FilmController {
 
+    formFilmInf(film) {
+        if(Object.keys(film).length !== 0){
+            let genres = [];
+            for (let i = 0; i < film.genres.length; ++i) {
+                genres.push(film.genres[i].name);
+            }
+
+            return {
+                id: film._id,
+                name: film.name,
+                description: film.description,
+                poster: film.poster[0].previewUrl,
+                genres: genres.join(", ")
+            }
+        }
+        return {}
+    }
+
     async getFilmInf(req, res){
         try {
             const {id} = req.params;
 
             const film = await Film.findById(id, "-persons");
 
-            let genres = [];
-            for (let i = 0; i < film.genres.length; ++i) {
-                genres.push(film.genres[i].name);
-            }
+            let result = this.formFilmInf(film);
 
-
-            res.send({
-                id: film._id,
-                name: film.name,
-                description: film.description,
-                poster: film.poster[0].previewUrl,
-                genres: genres.join(", ")
-            });
+            res.send({result});
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            res.send({message: "Ошибка сервера"});
         }
     }
 
@@ -41,21 +49,26 @@ class FilmController {
             res.send({acting});
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            res.send({message: "Ошибка сервера"});
         }
     }
 
     async getFilmByGenre(req, res){
         try {
+            const userId = req.user._id;
             const genres = req.params.genres.split('&');
 
-            const films = await Film.find({genres: genres});
+            const user = await User.findOne({ _id: userId });
+            const tuchedFilms = await FilmWithScore.find({$and: [{ _id: {$in: user.films}}, {"genres.name": {$in: genres}}]}).distinct('film');
 
-            res.send(films);
+            const film = await Film.findOne({ _id: { $nin: tuchedFilms } });
 
+            let result = this.formFilmInf(film);
+
+            res.send({result});
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            res.send({message: "Ошибка сервера"});
         }
     }
 
@@ -64,40 +77,39 @@ class FilmController {
             const userId = req.user._id;
 
             const user = await User.findOne({ _id: userId });
-            const tuchedFilms = await FilmWithScore.find({ _id: user.films }).distinct('film');
+            const tuchedFilms = await FilmWithScore.find({ _id: {$in: user.films} }).distinct('film');
 
-            const films = await Film.find({ _id: { $nin: tuchedFilms } }).limit(1);
+            const film = await Film.findOne({ _id: { $nin: tuchedFilms } });
 
-            let genres = [];
+            let result = this.formFilmInf(film);
 
-            for (let i = 0; i < films[0].genres.length; ++i) {
-                genres.push(films[0].genres[i].name);
-            }
-
-            res.send({
-                id: films[0].id,
-                name: films[0].name,
-                description: films[0].description,
-                poster: films[0].poster[0].previewUrl,
-                genres: genres.join(", ")
-            });
+            res.send(result);
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            res.send({message: "Ошибка сервера"});
         }
     }
 
-    async getFilmByYear(req, res){
+    async getFilmForTwoUsers(req, res){
         try {
-            const {year} = req.params;
+            const userId = req.user._id;
+            const secondUserId = req.body.secondUserId;
 
-            const film = await Film.find({year: year});
+            const firstUser = await User.findOne({ _id: userId });
+            const secondUser = await User.findOne({ _id: secondUserId });
 
-            res.send(film);
+            const tuchedFilms_1 = await FilmWithScore.find({ _id: {$in: firstUser.films}}).distinct('film');
+            const tuchedFilms_2 = await FilmWithScore.find({ _id:  {$in: secondUser.films}}).distinct('film');
+            const touchedFilms_both = Object.assign(tuchedFilms_1, tuchedFilms_2);
 
+            const film = await Film.findOne({ _id: { $nin: touchedFilms_both } });
+
+            let result = this.formFilmInf(film);
+
+            res.send(result);
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            res.send({message: "Ошибка сервера"});
         }
     }
 
@@ -109,13 +121,30 @@ class FilmController {
 
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
+            res.send({message: "Ошибка сервера"});
+        }
+    }
+
+    async getUserFilms(req, res){
+        try {
+            const userId = req.user._id;
+
+            const user = await User.findOne({_id: userId});
+            const tuchedFilms_id = await FilmWithScore.find({ _id: {$in: user.films}}).distinct("film");
+
+            const films = await Film.find({ _id: { $in: tuchedFilms_id } });
+
+            res.send(films);
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Ошибка сервера"});
         }
     }
 
     async addFilm(req, res){
         try {
-            const {userId, filmId, filmState} = req.body;
+            const userId = req.user._id;
+            const {filmId, filmState} = req.body;
 
             const scoredFilm = new FilmWithScore({
                 film: filmId,
@@ -131,24 +160,7 @@ class FilmController {
             res.send(scoredFilm);
         } catch (e) {
             console.log(e);
-            res.send({message: "Server error"});
-        }
-    }
-
-    async getUserFilms(req, res){
-        try {
-            const userId = '661f9353b488840e7989ea47';
-
-            const userFilms = await User.findOne(
-                {_id: userId},
-                {films: 1}
-            );
-
-            res.send(userFilms);
-
-        } catch (e) {
-            console.log(e);
-            res.send({message: "Server error"});
+            res.send({message: "Ошибка сервера"});
         }
     }
 }
