@@ -6,39 +6,6 @@ const {json} = require("express");
 
 class FilmController {
 
-    formFilmInf(film) {
-        if(Object.keys(film).length !== 0){
-            let genres = [];
-            for (let i = 0; i < film.genres.length; ++i) {
-                genres.push(film.genres[i].name);
-            }
-
-            return {
-                id: film._id,
-                name: film.name,
-                description: film.description,
-                poster: film.poster[0].previewUrl,
-                genres: genres.join(", ")
-            }
-        }
-        return {}
-    }
-
-    async getFilmInf(req, res){
-        try {
-            const {id} = req.params;
-
-            const film = await Film.findById(id, "-persons");
-
-            let result = this.formFilmInf(film);
-
-            res.send({result});
-        } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
-        }
-    }
-
     async getFilmActing(req, res) {
         try {
             const {id} = req.params;
@@ -61,11 +28,23 @@ class FilmController {
             const user = await User.findOne({ _id: userId });
             const tuchedFilms = await FilmWithScore.find({$and: [{ _id: {$in: user.films}}, {"genres.name": {$in: genres}}]}).distinct('film');
 
-            const film = await Film.findOne({ _id: { $nin: tuchedFilms } });
+            let film = await Film.findOne({ _id: { $nin: tuchedFilms } });
 
-            let result = this.formFilmInf(film);
+            if(Object.keys(film).length !== 0) {
+                let genres = [];
+                for (let i = 0; i < film.genres.length; ++i) {
+                    genres.push(film.genres[i].name);
+                }
 
-            res.send({result});
+                res.send({
+                    id: film._id,
+                    name: film.name,
+                    description: film.description,
+                    poster: film.poster[0].previewUrl,
+                    genres: genres.join(", ")
+                });
+            }
+            res.send({});
         } catch (e) {
             console.log(e);
             res.send({message: "Ошибка сервера"});
@@ -81,9 +60,21 @@ class FilmController {
 
             const film = await Film.findOne({ _id: { $nin: tuchedFilms } });
 
-            let result = this.formFilmInf(film);
+            if(Object.keys(film).length !== 0) {
+                let genres = [];
+                for (let i = 0; i < film.genres.length; ++i) {
+                    genres.push(film.genres[i].name);
+                }
 
-            res.send(result);
+                res.send({
+                    id: film._id,
+                    name: film.name,
+                    description: film.description,
+                    poster: film.poster[0].previewUrl,
+                    genres: genres.join(", ")
+                });
+            }
+            res.send({});
         } catch (e) {
             console.log(e);
             res.send({message: "Ошибка сервера"});
@@ -104,9 +95,21 @@ class FilmController {
 
             const film = await Film.findOne({ _id: { $nin: touchedFilms_both } });
 
-            let result = this.formFilmInf(film);
+            if(Object.keys(film).length !== 0) {
+                let genres = [];
+                for (let i = 0; i < film.genres.length; ++i) {
+                    genres.push(film.genres[i].name);
+                }
 
-            res.send(result);
+                res.send({
+                    id: film._id,
+                    name: film.name,
+                    description: film.description,
+                    poster: film.poster[0].previewUrl,
+                    genres: genres.join(", ")
+                });
+            }
+            res.send({});
         } catch (e) {
             console.log(e);
             res.send({message: "Ошибка сервера"});
@@ -128,9 +131,10 @@ class FilmController {
     async getUserFilms(req, res){
         try {
             const userId = req.user._id;
+            const isWatch = req.body.isWatch;
 
             const user = await User.findOne({_id: userId});
-            const tuchedFilms_id = await FilmWithScore.find({ _id: {$in: user.films}}).distinct("film");
+            const tuchedFilms_id = await FilmWithScore.find({$and: [{ _id: {$in: user.films}}, {isWatch: isWatch}, {isWant: true}]}).distinct("film");
 
             const films = await Film.find({ _id: { $in: tuchedFilms_id } });
 
@@ -144,11 +148,13 @@ class FilmController {
     async addFilm(req, res){
         try {
             const userId = req.user._id;
-            const {filmId, filmState} = req.body;
+            const {filmId, isWanted, isWatch} = req.body;
 
             const scoredFilm = new FilmWithScore({
                 film: filmId,
-                isWanted: filmState
+                isWanted: isWanted,
+                isWatch: isWatch,
+
             });
 
             await scoredFilm.save();

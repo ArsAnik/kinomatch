@@ -23,7 +23,6 @@ export const Main = () => {
                 console.log(error);
             })
     }, []);
-    console.log(id_user,data.id)
 
     return (
         <div className="main">
