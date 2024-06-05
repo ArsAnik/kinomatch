@@ -8,10 +8,11 @@ router.post('/getFilmForTwoUsers', authMiddleware, FilmController.getFilmForTwoU
 router.post('/getUserFilms', authMiddleware, FilmController.getUserFilms);
 
 router.get('/getInfFilm/:id', authMiddleware, FilmController.getInfFilm);
-router.get('/getFilmActing/:id', authMiddleware, FilmController.getFilmActing);
+router.get('/getFilmActing/:id/:number', authMiddleware, FilmController.getFilmActing);
 router.get('/getFilmByGenre/:genres', authMiddleware, FilmController.getFilmByGenre);
 
 router.get('/getGenres', authMiddleware, FilmController.getGenres);
 router.post('/addFilm', authMiddleware, FilmController.addFilm);
+router.post('/editFilmStatus', authMiddleware, FilmController.editFilmStatus);
 
 module.exports = router;

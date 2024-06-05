@@ -38,16 +38,16 @@ class FilmController {
     async getFilmActing(req, res) {
         try {
             const {id} = req.params;
-            const {number} = req.params;
+            const {number} = Number(req.params);
 
             let acting;
 
             if(number === 0){
-                acting = await Film.findById(id).distinct("persons");
+                acting = await Film.findById(id, "persons");
                 acting = acting.persons;
             }
             else{
-                acting = await Film.findById(id).distinct("persons").limit(number);
+                acting = await Film.findById(id, "persons").limit(number);
                 acting = acting.persons.slice(0, number);
             }
 
@@ -221,24 +221,21 @@ class FilmController {
         }
     }
 
-    // async editFilmStatus(req, res){
-    //     try {
-    //         const userId = req.user._id;
-    //         const {filmId, isWanted, isWatch} = req.body;
-    //
-    //         const user = await User.findOne({_id: userId});
-    //         const filmWithScore_id = await FilmWithScore.find({$and: [{ _id: {$in: user.films}}, {film: {filmId}}]}).distinct("_id");
-    //
-    //         await FilmWithScore.findByIdAndUpdate(
-    //             filmWithScore_id
-    //             {$addToSet: {films: scoredFilm}});
-    //
-    //         res.send(scoredFilm);
-    //     } catch (e) {
-    //         console.log(e);
-    //         res.send({message: "Ошибка сервера"});
-    //     }
-    // }
+    async editFilmStatus(req, res){
+        try {
+            const userId = req.user._id;
+            const {filmId, isWanted, isWatch} = req.body;
+
+            const user = await User.findOne({_id: userId});
+            const filmWithScore_id = await FilmWithScore.find({$and: [{ _id: {$in: user.films}}, {film: filmId}]}).distinct("_id");
+
+            const updated = await FilmWithScore.findByIdAndUpdate(filmWithScore_id, {isWanted, isWatch});
+            res.send(updated);
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Ошибка сервера"});
+        }
+    }
 }
 
 module.exports = new FilmController();
