@@ -7,16 +7,16 @@ const authMiddleware = require('../middleware/auth.middleware')
 
 router.post('/registration',
     [
-        check('login', 'Login cannot be empty').notEmpty(),
-        check('name', 'Name cannot be empty').notEmpty(),
-        check('email', "Uncorrected email").isEmail(),
-        check('password', "Password should be longer than 3 symbols").isLength({min:4}),
+        check('login', 'Поле "логин" не может быть пустым').notEmpty(),
+        check('name', 'Поле "имя" не может быть пустым').notEmpty(),
+        check('email', "Неккоректный email").isEmail(),
+        check('password', "Пароль должен быть длиннее 3 символов").isLength({min:4}),
     ],
     AuthController.registration);
 
 router.post('/login', [
-        check('login', 'Login cannot be empty').notEmpty(),
-        check('password', 'Password cannot be empty').notEmpty()
+        check('login', 'Поле "логин" не может быть пустым').notEmpty(),
+        check('password', 'Поле "имя" не может быть пустым').notEmpty()
     ],
     AuthController.login);
 

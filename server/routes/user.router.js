@@ -3,8 +3,6 @@ const UserController = require('../controllers/user.controller');
 const router = new Router();
 const authMiddleware = require('../middleware/auth.middleware');
 
-
-router.get('/getUser/:id', UserController.getUser);
 router.get('/findUser/:login', UserController.findUser);
 
 router.patch('/updateUser', authMiddleware, UserController.updateUser);
