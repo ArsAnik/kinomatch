@@ -11,7 +11,10 @@ export const ListLikedFilm =() =>{
     const id_user = JSON.parse(localStorage.getItem('user')).id;
 
     const [data, setData] = useState(["Загрузка..."]);
+    const [update, setUpdate] = useState(false);
+
     useEffect(() => {
+        console.log(1);
         axios.post('http://localhost:5000/film/getUserFilms',{isWatch: false}, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 console.log(response);
@@ -20,7 +23,8 @@ export const ListLikedFilm =() =>{
             .catch(function (error) {
                 console.log(error);
             })
-    }, []);
+        setUpdate(false);
+    }, [update]);
 
     return(
         <div className="liked_body">
@@ -37,7 +41,7 @@ export const ListLikedFilm =() =>{
             <div className="liked">
                 {data.map((inf) =>
                     <Block_photo_header img={inf.photo} header={inf.name} idF={inf.id}>
-                        <Button_ok_no idF={inf.id} idU={id_user}/>
+                        <Button_ok_no onBtnClick={setUpdate} idF={inf.id} idU={id_user}/>
                     </Block_photo_header>
                 )}
 
