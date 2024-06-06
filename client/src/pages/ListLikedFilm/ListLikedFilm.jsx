@@ -17,11 +17,10 @@ export const ListLikedFilm =() =>{
         console.log(1);
         axios.post('http://localhost:5000/film/getUserFilms',{isWatch: false}, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
-                console.log(response);
                 setData(response.data);
             })
             .catch(function (error) {
-                console.log(error);
+                window.location.href = '/errors';
             })
         setUpdate(false);
     }, [update]);

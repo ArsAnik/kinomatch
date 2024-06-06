@@ -1,6 +1,4 @@
 import axios from "axios";
-import {useRoutes} from "../routes.jsx";
-import {Link, Navigate} from "react-router-dom";
 
 export const registration = async(email, name, login, password) => {
     try{
@@ -36,7 +34,7 @@ export const logout = () => {
         localStorage.removeItem('token')
         window.location.href = '/authorization';
     } catch (e) {
-        console.log(e)
+        window.location.href = '/errors';
     }
 }
 

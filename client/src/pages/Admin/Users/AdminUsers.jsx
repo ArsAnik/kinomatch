@@ -15,10 +15,9 @@ export const AdminUsers =() =>{
     useEffect(() => {
         axios.get('http://localhost:5000/admin/getUsers',  {headers:{Authorization:`Bearer ${localStorage.getItem('admin_token')}`}})
             .then(function (response){
-                console.log(response.data);
                 setData(response.data);
             }).catch(function (error) {
-                console.log(error);
+            window.location.href = '/errors';
             });
         setReaload(false);
     }, [reaload]);
@@ -26,10 +25,8 @@ export const AdminUsers =() =>{
     function clickHandler(userId){
         axios.post('http://localhost:5000/admin/deleteUser', {userId},  {headers:{Authorization:`Bearer ${localStorage.getItem('admin_token')}`}})
             .then(function (response){
-
-                console.log(response.data);
             }).catch(function (error) {
-            console.log(error);
+            window.location.href = '/errors';
         });
         setReaload(true);
     }

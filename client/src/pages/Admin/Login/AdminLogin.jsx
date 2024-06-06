@@ -25,7 +25,6 @@ export const AdminLogin =() =>{
                     window.location.href = '/admin/';
                 })
         } catch (e) {
-            console.log(e.response.data.message);
             return(e.response.data.message)
         }
     }

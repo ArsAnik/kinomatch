@@ -18,7 +18,7 @@ export const AdminFilms =() =>{
             .then(function (response){
                 setPagesAtAll(Number(response.data));
             }).catch(function (error) {
-            console.log(error);
+            window.location.href = '/errors';
         });
     }, []);
 
@@ -26,10 +26,9 @@ export const AdminFilms =() =>{
     useEffect(() => {
         axios.post('http://localhost:5000/admin/getFilms',  {page}, {headers:{Authorization:`Bearer ${localStorage.getItem('admin_token')}`}})
             .then(function (response){
-                console.log(response.data);
                 setData(response.data);
             }).catch(function (error) {
-            console.log(error);
+            window.location.href = '/errors';
         });
         setPage(page);
         setReaload(false);
@@ -38,9 +37,8 @@ export const AdminFilms =() =>{
     function clickDeleteHandler(filmId){
         axios.post('http://localhost:5000/admin/deleteFilm', {filmId},  {headers:{Authorization:`Bearer ${localStorage.getItem('admin_token')}`}})
             .then(function (response){
-                console.log(response.data);
             }).catch(function (error) {
-            console.log(error);
+            window.location.href = '/errors';
         });
         setReaload(true);
     }

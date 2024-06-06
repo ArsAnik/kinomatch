@@ -13,11 +13,10 @@ export const ListWatchedFilm =() =>{
     useEffect(() => {
         axios.post('http://localhost:5000/film/getUserFilms',{isWatch: true},{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
-                console.log(response.data);
                 setData(response.data);
             })
             .catch(function (error) {
-                console.log(error);
+                window.location.href = '/errors';
             })
     }, []);
 

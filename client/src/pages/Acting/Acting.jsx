@@ -13,11 +13,10 @@ export const Acting =() =>{
     useEffect(() => {
         axios.get('http://localhost:5000/film/getFilmActing/' + filmId + '/0',{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
-                console.log(response.data.acting);
                 setData(response.data.acting);
             })
             .catch(function (error) {
-                console.log(error);
+                window.location.href = '/errors';
             })
     }, []);
 
