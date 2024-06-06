@@ -88,7 +88,7 @@ export const Main = () => {
                     <Button_filters/>
                 </div>
                 <div className="checkbox_switch">
-                    <button className={activeDouble ? "switch_btn_option active" : "switch_btn_option"}  onClick={() => {setDouble(false), setStateListForTwo(true)}}>
+                    <button className={activeDouble ? "switch_btn_option active" : "switch_btn_option"}  onClick={() => {setDouble(false),setStateListForTwo(true)}}>
                         <svg className="img_option" width="20.000000" height="23.000000" viewBox="0 0 20 23"
                              xmlns="http://www.w3.org/2000/svg">
                             <path id="path"
@@ -99,7 +99,7 @@ export const Main = () => {
                                   strokeOpacity="1.000000" strokeWidth="1.500000" strokeLinejoin="round"/>
                         </svg>
                     </button >
-                    <button className={!activeDouble ? "switch_btn_option active" : "switch_btn_option"} onClick={() => setStateListForTwo(false)}>
+                    <button className={!activeDouble ? "switch_btn_option active" : "switch_btn_option"} onClick={() => {setDouble(false),setStateListForTwo(false)}}>
                         <svg className="img_option" width="20.000000" height="23.000000" viewBox="0 0 20 23"
                              xmlns="http://www.w3.org/2000/svg">
                             <path id="path"

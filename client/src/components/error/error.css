@@ -24,3 +24,10 @@
     text-align: center;
     margin-top:50px;
 }
+
+.btn_back_error{
+    position: relative;
+    top: 28px;
+    margin-left:20px;
+
+}
