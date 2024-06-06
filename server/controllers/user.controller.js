@@ -9,12 +9,16 @@ class UserController {
 
     async findUser(req, res){
         try {
+            const userId = req.user._id;
             const {login} = req.params;
 
-            const user = await User.find({login: { $regex: login}});
+            const user = await User.find({$and: [{login: { $regex: login}}, {_id: {$nin: [userId]}}] });
+
+            console.log(user);
 
             return res.send(user);
         } catch (e) {
+            console.log(e);
             return res.status(400).send({message: "Ошибка сервера"});
         }
     }

@@ -5,19 +5,16 @@ import {Link} from "react-router-dom";
 
 const Block_photo_header = (props) => {
     return (
-        <div className="film_block">
-            <Link to={"/film/" + props.idF}>
-                <a>
-                    <img src={props.img} className="poster_film"/>
-                </a>
-            </Link>
+        <Link to={"/film/" + props.id}>
+            <div className="film_block">
+                <img src={props.img} className="poster_film"/>
 
-
-            <div className="choice_block">
-                <div className="header_film">{props.header}</div>
-                {props.children}
+                <div className="choice_block">
+                    <div className="header_film">{props.header}</div>
+                    {props.children}
+                </div>
             </div>
-        </div>
+        </Link>
 
     );
 };

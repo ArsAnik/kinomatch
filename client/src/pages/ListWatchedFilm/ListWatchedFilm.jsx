@@ -34,8 +34,7 @@ export const ListWatchedFilm =() =>{
             </div>
             <div className="watched">
                 {data.map((inf) =>
-                    <Block_photo_header img={inf.photo} header={inf.name}>
-                    </Block_photo_header>
+                    <Block_photo_header id={inf.id} img={inf.photo} header={inf.name}></Block_photo_header>
                 )}
 
             </div>
