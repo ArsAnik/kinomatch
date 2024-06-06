@@ -10,7 +10,7 @@ const Block_acting = () => {
 
     const [data, setData] = useState(["Загрузка..."]);
     useEffect(() => {
-        axios.get('http://localhost:5000/film/getFilmActing/' + filmId,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+        axios.get('http://localhost:5000/film/getFilmActing/' + filmId + '/9',{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 console.log(response.data.acting);
                 setData(response.data.acting);
@@ -23,7 +23,7 @@ const Block_acting = () => {
     return (
         <div className="acting">
             {data.map((inf) =>
-                <Inf_acting photo={inf.photo} name={inf.name} role={inf.description}/>
+                <Inf_acting photo={inf.photo} name={inf.name} role={inf.profession}/>
             )}
             <div className="button_further_block">
                 <Link to={"/acting/" + filmId}>

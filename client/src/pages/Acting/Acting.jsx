@@ -11,7 +11,7 @@ export const Acting =() =>{
 
     const [data, setData] = useState(["Загрузка..."]);
     useEffect(() => {
-        axios.get('http://localhost:5000/film/getFilmActing/' + filmId,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+        axios.get('http://localhost:5000/film/getFilmActing/' + filmId + '/0',{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 console.log(response.data.acting);
                 setData(response.data.acting);
@@ -28,7 +28,7 @@ export const Acting =() =>{
             </div>
             <div className="acting_block_all">
                 {data.map((inf) =>
-                    <Inf_acting photo={inf.photo} name={inf.name} role={inf.description}/>
+                    <Inf_acting photo={inf.photo} name={inf.name} role={inf.profession}/>
                 )}
             </div>
         </div>

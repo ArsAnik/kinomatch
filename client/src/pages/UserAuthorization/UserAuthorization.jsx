@@ -12,6 +12,7 @@ export const UserAuthorization =() =>{
     const [password,setPassword] = useState("")
     const [message_error, setMessage] = useState("");
     const [message_error_show, setMessageShow] = useState("hide");
+    let timeout;
 
     async function clickHandler(login, password) {
         const response = await authorization(login, password)
@@ -23,14 +24,15 @@ export const UserAuthorization =() =>{
     }
 
     function timerShow(){
-        setInterval(() => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
             setMessageShow("hide");
         }, 5000);
     }
 
     return(
         <div className="authorization_body">
-            <div className="registration_windows_error">
+            <div className="authorization_windows_error">
                 {(message_error)
                     ? <Error_window message={message_error} show={message_error_show}/>
                     : <></>}

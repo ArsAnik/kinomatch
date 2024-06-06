@@ -6,7 +6,10 @@ const Inf_acting = (props) => {
         <div className="inf_acting">
             <img src={props.photo} className="acting_photo"/>
             <div className="acting_text">{props.name}<br/>
-                {props.role}</div>
+                <div className="role_acting">
+                    {props.role}
+                </div>
+            </div>
         </div>
     );
 };

@@ -15,13 +15,14 @@
 }
 
 .watched_btn_filters{
+    opacity: 0;
     margin-right: 20px
 }
 .watched{
     position: absolute;
-    width: 305px;
+    width: auto;
     min-height: 700px;
     top: 120px;
-    left: 60%;
-    transform: translate(-60%);
+    left: 50%;
+    transform: translate(-50%);
 }

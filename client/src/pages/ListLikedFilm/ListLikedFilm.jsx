@@ -12,9 +12,9 @@ export const ListLikedFilm =() =>{
 
     const [data, setData] = useState(["Загрузка..."]);
     useEffect(() => {
-        axios.get('http://localhost:5000/film/getUserFilms',{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+        axios.post('http://localhost:5000/film/getUserFilms',{isWatch: false}, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
-                console.log(response.data);
+                console.log(response);
                 setData(response.data);
             })
             .catch(function (error) {
@@ -36,25 +36,10 @@ export const ListLikedFilm =() =>{
 
             <div className="liked">
                 {data.map((inf) =>
-                    <Block_photo_header img={inf.photo} header={inf.name}>
+                    <Block_photo_header img={inf.photo} header={inf.name} idF={inf.id}>
                         <Button_ok_no idF={inf.id} idU={id_user}/>
                     </Block_photo_header>
                 )}
-                {/*<Block_photo_header img="src/img/liked_photo_1.png" header="Оппенгеймер">*/}
-                {/*    <Button_ok_no/>*/}
-                {/*</Block_photo_header>*/}
-
-                {/*<Block_photo_header img="src/img/liked_photo_2.png" header="Барби">*/}
-                {/*    <Button_ok_no/>*/}
-                {/*</Block_photo_header>*/}
-
-                {/*<Block_photo_header img="src/img/liked_photo_3.png" header="Бедные - несчастные">*/}
-                {/*    <Button_ok_no/>*/}
-                {/*</Block_photo_header>*/}
-
-                {/*<Block_photo_header img="src/img/liked_photo_4.png" header="Гарри Поттер и Философский камень">*/}
-                {/*    <Button_ok_no/>*/}
-                {/*</Block_photo_header>*/}
 
             </div>
 
