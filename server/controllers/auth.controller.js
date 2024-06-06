@@ -34,8 +34,7 @@ class AuthController {
             return res.json({message: "Пользователь успешно зарегистрирован"});
 
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -72,8 +71,7 @@ class AuthController {
             })
 
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -91,8 +89,7 @@ class AuthController {
                 }
             })
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 }

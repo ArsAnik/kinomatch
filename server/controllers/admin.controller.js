@@ -16,8 +16,7 @@ class AuthController {
             await admin.save();
             return res.json({message: "Админ успешно зарегистрирован"});
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -47,8 +46,7 @@ class AuthController {
             })
 
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -56,10 +54,19 @@ class AuthController {
         try {
             const users = await User.find({});
 
+            for(let i = 0; i < users.length; ++i){
+                users[i] = new Object({
+                    id: users[i]._id,
+                    name: users[i].name,
+                    login: users[i].login,
+                    email: users[i].email,
+                    avatar: users[i].avatar
+                });
+            }
+
             return res.send(users);
         } catch (e) {
-            console.log(e);
-            return res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -68,34 +75,49 @@ class AuthController {
             const {page} = req.body;
             const films = await Film.find({}).skip(page * 10).limit(10);
 
+            for(let i = 0; i < films.length; ++i){
+                films[i] = new Object({
+                    id: films[i]._id,
+                    name: films[i].name,
+                    description: films[i].description,
+                    photo: films[i].poster[0].previewUrl
+                });
+            }
+
             return res.send(films);
         } catch (e) {
-            console.log(e);
-            return res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
+        }
+    }
+
+    async getFilmsPages(req, res){
+        try {
+            const countFilms = await Film.estimatedDocumentCount();
+            return res.send(Math.ceil((countFilms / 10)).toString());
+        } catch (e) {
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
     async deleteUser(req, res){
         try {
-            const {id} = req.body;
+            const id = req.body.userId;
             await User.deleteOne({ _id: id });
 
             return res.send({message: "Пользователь успешно удалён"});
         } catch (e) {
-            console.log(e);
-            return res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
     async deleteFilm(req, res){
         try {
-            const {id} = req.body;
-            await Film.deleteOne({ _id: id });
+            const {filmId} = req.body;
+            await Film.deleteOne({ _id: filmId });
 
             return res.send({message: "Фильм успешно удалён"});
         } catch (e) {
-            console.log(e);
-            return res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 }

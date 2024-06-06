@@ -8,8 +8,10 @@ router.post('/registration', AdminController.registration);
 router.post('/login', AdminController.login);
 
 router.get('/getUsers', authMiddleware, AdminController.getUsers);
-router.get('/getFilms', authMiddleware, AdminController.getFilms);
-router.delete('/login', authMiddleware, AdminController.deleteUser);
+router.post('/getFilms', authMiddleware, AdminController.getFilms);
+router.get('/getFilmsPages', authMiddleware, AdminController.getFilmsPages);
+router.post('/deleteUser', authMiddleware, AdminController.deleteUser);
+router.post('/deleteFilm', authMiddleware, AdminController.deleteFilm);
 router.post('/login', authMiddleware, AdminController.deleteFilm);
 
 module.exports = router;

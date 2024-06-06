@@ -1,9 +1,67 @@
-.main_admin{
-    color: #fff;
+.admin_button_back{
+    margin: 20px;
+}
+
+.admin_film{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 43px;
+    gap: 15px;
+}
+
+.admin_film_photo{
+    height: 300px;
+}
+
+.film_inf_block{
+    text-align: center;
+    align-items: center;
+    background: rgba(197, 198, 199, 0.13);
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px 25px 15px;
+}
+
+.film_name, .film_description{
+    display: block;
+    color: var(--color_text_white);
     font-family: var(--font_Bahn);
 }
 
-.admin_authorization_header{
-    text-align: center;
+.film_name{
+    font-size: 18px;
+}
+
+.film_description{
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.film_delete_button{
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ff3d3d;
+    border-radius: 10px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    color: #ff3d3d;
+}
+
+.admin_film_pages{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     padding: 20px;
+    color: #fff;
+    font-size: 20px;
+    font-family: var(--font_Bahn);
 }
