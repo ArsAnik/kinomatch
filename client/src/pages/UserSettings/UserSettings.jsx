@@ -37,12 +37,7 @@ export const UserSettings =() =>{
 
     }
 
-    function timerShow(){
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            setMessageShow("hide");
-        }, 5000);
-    }
+
 
     async function changeHandler(e) {
         const file = e.target.files[0]
@@ -52,6 +47,13 @@ export const UserSettings =() =>{
             setMessageShow("show");
             timerShow();
         }
+    }
+
+    function timerShow(){
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            setMessageShow("hide");
+        }, 5000);
     }
 
     return(
