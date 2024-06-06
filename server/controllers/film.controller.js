@@ -30,8 +30,7 @@ class FilmController {
                 res.send({});
             }
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -53,8 +52,7 @@ class FilmController {
 
             res.send({acting});
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -86,8 +84,7 @@ class FilmController {
                 res.send({});
             }
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -118,8 +115,7 @@ class FilmController {
                 res.send({});
             }
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -155,8 +151,7 @@ class FilmController {
                 res.send({});
             }
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -167,8 +162,7 @@ class FilmController {
             res.send({genres});
 
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -191,8 +185,7 @@ class FilmController {
             }
             res.send(films);
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -216,8 +209,7 @@ class FilmController {
 
             res.send(scoredFilm);
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -232,8 +224,7 @@ class FilmController {
             const updated = await FilmWithScore.findByIdAndUpdate(filmWithScore_id, {isWanted, isWatch});
             res.send(updated);
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 }

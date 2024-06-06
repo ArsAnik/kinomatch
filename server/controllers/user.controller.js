@@ -15,8 +15,7 @@ class UserController {
 
             return res.send(user);
         } catch (e) {
-            console.log(e);
-            return res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -26,7 +25,7 @@ class UserController {
             const {name} = req.body;
 
             if(!name || name === ''){
-                return res.send({message: "Uncorrected request"});
+                return res.status(404).send({message: "Некорректное имя"});
             }
 
             const user = await User.findByIdAndUpdate(
@@ -35,7 +34,7 @@ class UserController {
             );
 
             return res.send({
-                message: "Information updated successfully",
+                message: "Информация успешно обновлена",
                 user:{
                     id: user.id,
                     name: user.name,
@@ -45,8 +44,7 @@ class UserController {
             });
 
         } catch (e) {
-            console.log(e);
-            return res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 
@@ -62,7 +60,7 @@ class UserController {
             await user.save();
 
             res.send({
-                message: "Information updated successfully",
+                message: "Информация успешно обновлена",
                 user:{
                     id: user.id,
                     name: user.name,
@@ -71,8 +69,7 @@ class UserController {
                 }
             });
         } catch (e) {
-            console.log(e);
-            res.send({message: "Ошибка сервера"});
+            return res.status(400).send({message: "Ошибка сервера"});
         }
     }
 }
