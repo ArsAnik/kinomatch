@@ -5,33 +5,95 @@ import Button_profile from "../../components/button_profile/button_profile.jsx";
 import Block_inf_film from "../../components/block_inf_film/block_inf_film.jsx";
 import icon_film from "../../img/icon_film.svg";
 import {Link} from "react-router-dom";
-import axios from "axios";
 import {addFilm} from "../../action/film.js";
-import {updateAvatar} from "../../action/user.js";
+import axios from "axios";
+import Inf_acting from "../../components/inf_acting/inf_acting.jsx";
+
 
 export const Main = () => {
-    const id_user = JSON.parse(localStorage.getItem('user')).id;
-
+    const [activeDouble, setDouble] = useState(false);
+    const [stateListForTwo,setStateListForTwo ] = useState(false);
     const [data, setData] = useState(["Загрузка..."]);
+    const [secondUserId, setSecondUserId] = useState("")
+    const [user, setUser] = useState(["Загрузка..."]);
+    const [secondUser, setSecondUser] = useState("")
+    const [secondUserLogin, setSecondUserLogin] = useState("")
+    const [next, setNext] = useState(false)
+
     useEffect(() => {
-        axios.get('http://localhost:5000/film/getFilmForUser',{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+        if (!activeDouble){
+            axios.get('http://localhost:5000/film/getFilmForUser',{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+                .then(function (response) {
+                    console.log(response.data);
+                    setData(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
+        else{
+            axios.post('http://localhost:5000/film/getFilmForTwoUsers',{secondUserId},{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+                .then(function (response) {
+                    console.log(response.data);
+                    setData(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
+        setNext(false);
+    }, [activeDouble, next]);
+
+    const clickHandler = (event) => {
+        axios.get('http://localhost:5000/user/findUser/'+ secondUser,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 console.log(response.data);
-                setData(response.data);
+                setUser(response.data);
             })
             .catch(function (error) {
                 console.log(error);
             })
-    }, []);
+    }
+
+
+    async function clickHandlerSave(user_id,user_log){
+        setSecondUserId(user_id)
+        setSecondUserLogin(user_log)
+        setDouble(true)
+        setStateListForTwo(false)
+        console.log(user_id)
+
+    }
+
+
+    function chooseButtonHandler(filmId, isWanted, isWatch) {
+        addFilm(filmId, isWanted, isWatch).then(() => {
+            setNext(true);
+        }).catch(() => {
+            console.log('Ошибка');
+        });
+    }
 
     return (
         <div className="main">
+            {stateListForTwo &&
+                <div className="window_search">
+                    <input type="search" placeholder="Логин" value = {secondUser} onChange={(event)=> setSecondUser(event.target.value)}/>
+                    <button className="btn_search" onClick={clickHandler}>Искать!</button>
+                    <br/>
+                    {user.map((inf) =>
+                        <a className="text_search" onClick={() => clickHandlerSave(inf._id,inf.login)}>{inf.login}</a>
+                    )}
+
+                </div>
+            }
+
             <div className="main_btn_block">
                 <div className="main_btn_filter">
                     <Button_filters/>
                 </div>
                 <div className="checkbox_switch">
-                    <button className="switch_btn_option">
+                    <button className={activeDouble ? "switch_btn_option active" : "switch_btn_option"}  onClick={() => {setDouble(false), setStateListForTwo(true)}}>
                         <svg className="img_option" width="20.000000" height="23.000000" viewBox="0 0 20 23"
                              xmlns="http://www.w3.org/2000/svg">
                             <path id="path"
@@ -41,8 +103,8 @@ export const Main = () => {
                                   d="M1.23 15.25C0.69 14.08 1.12 12.7 2.22 12.05L4.99 10.41C5.48 10.13 6.08 10.13 6.55 10.43L6.9 10.65C7.25 10.87 7.71 10.58 7.66 10.16L6.85 3.33C6.81 2.93 6.94 2.53 7.23 2.25C7.54 1.94 8.04 1.91 8.39 2.19L8.58 2.34C8.87 2.57 9.06 2.9 9.12 3.27L10.24 10.21C10.26 10.35 10.38 10.45 10.52 10.45C10.67 10.45 10.79 10.34 10.8 10.19L11.47 3.33C11.51 2.93 11.71 2.56 12.02 2.3L12.13 2.22C12.5 1.92 13.03 1.95 13.37 2.29C13.63 2.55 13.78 2.91 13.78 3.28L13.78 14.41C13.78 14.83 14.26 15.06 14.59 14.8L16.28 13.45C17.11 12.79 18.22 13.22 18.91 13.67C19.13 13.81 19.16 14.11 19 14.32L15.03 19.7C15.03 19.7 13.28 21.7 9.28 21.7C5.28 21.7 3.61 20.37 3.28 19.7L1.23 15.25Z"
                                   strokeOpacity="1.000000" strokeWidth="1.500000" strokeLinejoin="round"/>
                         </svg>
-                    </button>
-                    <button className="switch_btn_option active">
+                    </button >
+                    <button className={!activeDouble ? "switch_btn_option active" : "switch_btn_option"} onClick={() => setStateListForTwo(false)}>
                         <svg className="img_option" width="20.000000" height="23.000000" viewBox="0 0 20 23"
                              xmlns="http://www.w3.org/2000/svg">
                             <path id="path"
@@ -58,8 +120,13 @@ export const Main = () => {
                     <Button_profile/>
                 </div>
             </div>
+            {activeDouble &&
+                <div className="login_friend">
+                    {secondUserLogin}
+                </div>
+            }
             <div className="main_block">
-                <a className="btn_no" onClick={() => addFilm(id_user, data.id,false)}>
+                <a className="btn_no" onClick={() => chooseButtonHandler(data.id, false, false)}>
                     <svg width="40.000000" height="40.000000" viewBox="6 1 40 40" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path id="path"
@@ -76,7 +143,7 @@ export const Main = () => {
                         <Block_inf_film header={data.name} img={data.poster} genres={data.genres}/>
                     </a>
                 </Link>
-                <a className="btn_yes" onClick={() => addFilm(id_user, data.id,true)}>
+                <a className="btn_yes" onClick={() => chooseButtonHandler(data.id, true,false)}>
                     <svg width="40.000000" height="40.000000" viewBox="0 2 40 40" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path id="path"

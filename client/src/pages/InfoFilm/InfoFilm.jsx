@@ -13,9 +13,10 @@ export const InfoFilm =() =>{
 
     const [data, setData] = useState(["Загрузка..."]);
     useEffect(() => {
-        axios.get('http://localhost:5000/film/getFilmInf/' + filmId,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+        axios.get('http://localhost:5000/film/getInfFilm/' + filmId,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 setData(response.data);
+                console.log(response.data);
             })
             .catch(function (error) {
                 console.log(error);

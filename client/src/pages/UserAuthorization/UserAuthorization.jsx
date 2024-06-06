@@ -12,6 +12,7 @@ export const UserAuthorization =() =>{
     const [password,setPassword] = useState("")
     const [message_error, setMessage] = useState("");
     const [message_error_show, setMessageShow] = useState("hide");
+    let timeout;
 
     async function clickHandler(login, password) {
         const response = await authorization(login, password)
@@ -23,7 +24,8 @@ export const UserAuthorization =() =>{
     }
 
     function timerShow(){
-        setInterval(() => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
             setMessageShow("hide");
         }, 5000);
     }

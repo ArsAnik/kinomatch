@@ -23,3 +23,7 @@
     line-height: 16px;
     margin-left: 50px
 }
+
+.role_acting{
+    color: var(--color_azure);
+}

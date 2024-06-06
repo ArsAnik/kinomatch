@@ -14,7 +14,7 @@ export const ListWatchedFilm =() =>{
 
     const [data, setData] = useState(["Загрузка..."]);
     useEffect(() => {
-        axios.get('http://localhost:5000/film/getUserFilms',{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+        axios.post('http://localhost:5000/film/getUserFilms',{isWatch: true},{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 console.log(response.data);
                 setData(response.data);
