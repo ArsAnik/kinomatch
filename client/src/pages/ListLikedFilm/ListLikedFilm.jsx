@@ -43,7 +43,7 @@ export const ListLikedFilm =() =>{
                         <Button_ok_no onBtnClick={setUpdate} idF={inf.id} idU={id_user}/>
                     </Block_photo_header>
                 )}
-
+                {!data.length && <div className="liked_message">Список пока пуст (</div>}
             </div>
 
         </div>

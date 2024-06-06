@@ -26,3 +26,9 @@
     left: 50%;
     transform: translate(-50%);
 }
+
+.liked_message{
+    font-size: 32px;
+    color: var(--color_text_white);
+    font-family: var(--font_Bahn);
+}
