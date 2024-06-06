@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useRoutes} from "../routes.jsx";
+import {Link, Navigate} from "react-router-dom";
 
 export const registration = async(email, name, login, password) => {
     try{
@@ -54,27 +55,27 @@ export const auth = () => {
 
 
 
-export const updateUser = (name) => {
+export const updateUser = async (name) => {
     try{
-        axios.patch('http://localhost:5000/user/updateUser', {name}, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+        await axios.patch('http://localhost:5000/user/updateUser', {name}, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response){
                 localStorage.setItem('user' , JSON.stringify(response.data.user))
             })
-        } catch (e) {
-            console.log(e)
-        }
+    } catch (e) {
+        return(e.response.data.message)
+    }
 }
 
 
-export const updateAvatar = (id,file) => {
+export const updateAvatar = async (id,file) => {
     try{
         let formData = new FormData()
         formData.append('file', file)
-        axios.post('http://localhost:5000/user/changeUserAvatar', formData, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+        await axios.post('http://localhost:5000/user/changeUserAvatar', formData, {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response){
                 localStorage.setItem('user' , JSON.stringify(response.data.user))
             })
         } catch (e) {
-            console.log(e)
+        return(e.response.data.message)
     }
 }

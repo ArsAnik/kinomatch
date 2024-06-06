@@ -32,7 +32,7 @@ export const UserAuthorization =() =>{
 
     return(
         <div className="authorization_body">
-            <div className="registration_windows_error">
+            <div className="authorization_windows_error">
                 {(message_error)
                     ? <Error_window message={message_error} show={message_error_show}/>
                     : <></>}

@@ -6,6 +6,7 @@ import default_photo from "../../img/default_photo.jpg";
 import {Link} from "react-router-dom";
 import {logout, updateAvatar, updateUser} from "../../action/user.js";
 import {static_path} from "../../../config.js";
+import Error_window from "../../components/error_window/error_window.jsx";
 
 
 export const UserSettings =() =>{
@@ -13,14 +14,53 @@ export const UserSettings =() =>{
     const AvatarUser = JSON.parse(localStorage.getItem('user')).avatar;
     const id = JSON.parse(localStorage.getItem('user')).id;
     const [name,setName] = useState(NameUser)
+    const [message_error, setMessage] = useState("");
+    const [message_error_show, setMessageShow] = useState("hide");
+    let timeout;
 
-    function changeHandler(e) {
+    async function clickHandler(name) {
+        const response = await updateUser(name)
+        if(response){
+            setMessage(response);
+            setMessageShow("show");
+            timerShow();
+        }
+        else{
+            const response = await updateUser(name)
+            if(response){
+                setMessage(response);
+                setMessageShow("show");
+                timerShow();
+            }
+        }
+
+
+    }
+
+    function timerShow(){
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            setMessageShow("hide");
+        }, 5000);
+    }
+
+    async function changeHandler(e) {
         const file = e.target.files[0]
-        updateAvatar(id, file)
+        const response = await updateAvatar(id, file)
+        if(response){
+            setMessage(response);
+            setMessageShow("show");
+            timerShow();
+        }
     }
 
     return(
         <div className="settings_body">
+            <div className="registration_windows_error">
+                {(message_error)
+                    ? <Error_window message={message_error} show={message_error_show}/>
+                    : <></>}
+            </div>
             <div className="settings_btn_back">
                 <Button_back href="/profile"/>
             </div>
@@ -41,7 +81,7 @@ export const UserSettings =() =>{
                 <div className="setting_inf_block">
                     <Input value = {name} setValue = {setName} type="text" placeholder="ФИО"/>
                     <Link to="/settings">
-                        <a className="setting_btn_save" onClick={() => updateUser(name)}>Сохранить</a>
+                        <a className="setting_btn_save" onClick={() => clickHandler(name)}>Сохранить</a>
                     </Link>
 
                     <Link to="/authorization">
