@@ -7,7 +7,6 @@ import icon_film from "../../img/icon_film.svg";
 import {Link} from "react-router-dom";
 import {addFilm} from "../../action/film.js";
 import axios from "axios";
-import Inf_acting from "../../components/inf_acting/inf_acting.jsx";
 
 
 export const Main = () => {
@@ -24,21 +23,19 @@ export const Main = () => {
         if (!activeDouble){
             axios.get('http://localhost:5000/film/getFilmForUser',{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
                 .then(function (response) {
-                    console.log(response.data);
                     setData(response.data);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    window.location.href = '/errors';
                 })
         }
         else{
             axios.post('http://localhost:5000/film/getFilmForTwoUsers',{secondUserId},{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
                 .then(function (response) {
-                    console.log(response.data);
                     setData(response.data);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    window.location.href = '/errors';
                 })
         }
         setNext(false);
@@ -47,11 +44,10 @@ export const Main = () => {
     const clickHandler = (event) => {
         axios.get('http://localhost:5000/user/findUser/'+ secondUser,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
-                console.log(response.data);
                 setUser(response.data);
             })
             .catch(function (error) {
-                console.log(error);
+                window.location.href = '/errors';
             })
     }
 
@@ -61,7 +57,6 @@ export const Main = () => {
         setSecondUserLogin(user_log)
         setDouble(true)
         setStateListForTwo(false)
-        console.log(user_id)
 
     }
 
@@ -70,7 +65,7 @@ export const Main = () => {
         addFilm(filmId, isWanted, isWatch).then(() => {
             setNext(true);
         }).catch(() => {
-            console.log('Ошибка');
+            window.location.href = '/errors';
         });
     }
 

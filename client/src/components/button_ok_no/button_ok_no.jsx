@@ -1,6 +1,6 @@
 import React from 'react';
 import './button_ok_no.css'
-import {addFilm, deleteFilm, editFilm} from "../../action/film.js";
+import {deleteFilm, editFilm} from "../../action/film.js";
 
 const Button_ok_no = (props) => {
 

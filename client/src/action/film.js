@@ -14,7 +14,7 @@ export const addFilm = async (filmId, isWanted, isWatch) => {
 export const editFilm = async (filmId, isWanted, isWatch) => {
     await axios.post('http://localhost:5000/film/editFilmStatus',{filmId,isWanted,isWatch},{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
         .then(function (response) {
-            location.reload()
+            return 0;
         })
         .catch(function (error) {
             console.log(error);
